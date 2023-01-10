@@ -1,0 +1,27 @@
+// @include mobile {}
+@mixin mobile {
+  @media screen and (min-width: 480px) {
+    @content;
+  }
+}
+// @include tablet {}
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+// @include desktop {}
+@mixin desktop {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
