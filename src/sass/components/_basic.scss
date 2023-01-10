@@ -1,18 +1,17 @@
-// Roboto Medium
-// 489
-
-// Roboto Regular
-// 49
-
 :root {
-  --fon-accent-white: #ffffff;
-  --fon-accent-black: #212121;
+  --accent-white: #ffffff;
+  --text-black: #212121;
   --text-accent: #ff6b08;
+  --red-warning: #ff001b;
 }
+body {
+  color: var(--primary-text-color);
+  font-family: 'Roboto', sans-serif;
 
-html {
+  background-color: var(--text-black);
   box-sizing: border-box;
 }
+
 * {
   box-sizing: inherit;
   margin: 0px;
