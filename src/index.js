@@ -11,3 +11,4 @@ import * as pagination from './js/pagination';
 import * as queue from './js/queue';
 import * as watched from './js/watched';
 import * as fetchFilm from './js/fetch-film/fetch-film';
+import * as render from './js/render';
