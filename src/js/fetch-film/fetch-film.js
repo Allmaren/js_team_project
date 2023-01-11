@@ -5,10 +5,10 @@ import FetchData from '../fetch-film/fetch-data';
 // import LoadMoreButton from './js/loadMoreBtn';
 
 const inputRequest = new FetchData();
-const loadMoreButton = new LoadMoreButton({
-  selector: '[data-action="load-more"]',
-  hidden: true,
-});
+// const loadMoreButton = new LoadMoreButton({
+//   selector: '[data-action="load-more"]',
+//   hidden: true,
+// });
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
