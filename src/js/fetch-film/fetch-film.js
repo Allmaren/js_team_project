@@ -1,8 +1,8 @@
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import FetchData from '../fech-film/fetch-data';
-import LoadMoreButton from './js/loadMoreBtn';
+import FetchData from '../fetch-film/fetch-data';
+// import LoadMoreButton from './js/loadMoreBtn';
 
 const inputRequest = new FetchData();
 const loadMoreButton = new LoadMoreButton({
