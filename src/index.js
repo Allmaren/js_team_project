@@ -1,9 +1,3 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
-
 import * as addToLibrary from './js/add-to-library';
 import * as buttonUp from './js/button_up';
 import * as fechLibrary from './js/fech-library';
