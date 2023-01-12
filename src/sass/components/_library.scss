@@ -1,0 +1,38 @@
+// FT-11 Зверстати контейнер сторінки "My Library" 
+// для правильного позиціонування карток фільмів 
+// (мобілка, планшет, робочий стіл)
+
+.list {
+    list-style: none;
+  }
+  .my-library {
+    width: 320px;
+    padding: 20px 40px;
+    @include tablet {
+        padding: 60px 60px;
+    }
+  }
+  .my-library-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    @include tablet {
+        flex-direction: row;
+    gap: 32px;
+    }
+    @include desktop {
+        gap: 16px;
+    }
+  }
+  .my-library-item {
+    width: 280px;
+    // height: 438px;
+    // background-color: blue;
+    @include tablet {
+        width: calc((100% - 32px) / 2);
+    }
+    @include desktop {
+        width: calc((100% - 32px) / 3);
+    }
+  }
