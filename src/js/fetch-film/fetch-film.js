@@ -10,10 +10,12 @@ const inputRequest = new FetchData();
 //   hidden: true,
 // });
 
+
 const searchForm = document.querySelector('.header__form');
 const gallery = document.querySelector('.search-film__by-name-js');
 // const loadMoreBtn = document.querySelector('.load-more');
 const headerSearchContainer = document.querySelector('.header__search-cont');
+
 
 // searchForm.addEventListener('submit', searchHandler);
 
@@ -51,8 +53,10 @@ async function searchHandler(event) {
         );
       } else {
         // loadMoreBtn.classList.remove('is-hidden');
+        
         Notiflix.Notify.success(`Hooray! We found ${total_results} images.`);
         createGalleryList(results);
+
       }
 
       // loadMoreButton.show();
