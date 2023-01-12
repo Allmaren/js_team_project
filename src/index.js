@@ -1,14 +1,18 @@
-import * as addToLibrary from './js/add-to-library';
-// import * as buttonUp from './js/button_up';
-import * as fetchLibrary from './js/fetch-library';
-import * as fetchQuery from './js/fetch-query';
-import * as fetchTrends from './js/fetch-trend';
-import * as loader from './js/loader';
-import * as modalFilm from './js/modal-film';
-import * as registration from './js/modal-registration';
-import * as modalTeam from './js/modal-team';
-import * as pagination from './js/pagination';
-import * as queue from './js/queue';
-import * as watched from './js/watched';
-// import * as fetchFilm from './js/fetch-film/fetch-film';
-import * as render from './js/render';
+import './js/fetch-film/fetch-film';
+import './js/fetch-library';
+import './js/fetch-query';
+import './js/fetch-trend';
+
+import './js/add-to-library';
+
+import './js/pagination';
+import './js/queue';
+import './js/watched';
+
+import './js/modal-film';
+import './js/modal-registration';
+import './js/modal-team';
+
+import './js/render';
+import './js/loader';
+import './js/button_up';
