@@ -1,9 +1,11 @@
+import axios from 'axios';
+
 const ul = document.querySelector('.trending__collection');
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const TRENDING = 'trending/movie/week';
 const API_KEY = '1d8f1c2313e3ed4d118cc85bb96261b9';
-const GENRES = 'genre/movie/list';
+
 
     getFetchTrending()
         .then(renderTrendingCard)
@@ -26,6 +28,7 @@ function renderTrendingCard(films) {
 <h3 class="card__title">${film.title}</h3>
 <div class="card-field">
     <p class="text__vote">${film.release_date}</p>
+    
 </div>
 
 </li>`
@@ -35,3 +38,6 @@ function renderTrendingCard(films) {
     ul.insertAdjacentHTML('beforeend', cardEl);
     // return cardEl;
 };
+
+
+
