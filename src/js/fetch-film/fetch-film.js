@@ -12,7 +12,7 @@ const inputRequest = new FetchData();
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
-const loadMoreBtn = document.querySelector('.load-more');
+// const loadMoreBtn = document.querySelector('.load-more');
 
 searchForm.addEventListener('submit', searchHandler);
 loadMoreBtn.addEventListener('click', loadMoreHandler);
@@ -20,9 +20,9 @@ loadMoreBtn.addEventListener('click', loadMoreHandler);
 async function searchHandler(event) {
   event.preventDefault(); //Чтоб не перезагружалась страничка при субмите формы
 
-  if (!loadMoreBtn.classList.contains('is-hidden')) {
-    loadMoreBtn.classList.add('is-hidden');
-  }
+  // if (!loadMoreBtn.classList.contains('is-hidden')) {
+  //   loadMoreBtn.classList.add('is-hidden');
+  // }
 
   inputRequest.searchQuery = event.currentTarget.elements.searchQuery.value;
   inputRequest.resetPage();
@@ -32,26 +32,26 @@ async function searchHandler(event) {
       clearList();
       Notiflix.Notify.failure('Please enter your search data.');
     } else {
-      loadMoreButton.show();
-      loadMoreButton.disable();
+      // loadMoreButton.show();
+      // loadMoreButton.disable();
       const response = await inputRequest.makesRequest();
       const {
         data: { hits, totalHits },
       } = response;
       clearList();
-      loadMoreButton.enable();
+      // loadMoreButton.enable();
 
       if (hits.length === 0) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
       } else {
-        loadMoreBtn.classList.remove('is-hidden');
+        // loadMoreBtn.classList.remove('is-hidden');
         Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
         createGalleryList(hits);
       }
 
-      loadMoreButton.show();
+      // loadMoreButton.show();
     }
   } catch (error) {
     Notiflix.Notify.failure(
@@ -59,7 +59,7 @@ async function searchHandler(event) {
     );
     console.log(error.message);
 
-    loadMoreButton.enable();
+    // loadMoreButton.enable();
   }
 }
 
