@@ -90,6 +90,7 @@
 
 .input-container {
   display: flex;
+  align-items: center;
 }
 
 .search-film__input {
@@ -137,7 +138,7 @@
     background: 0 0;
     border: none;
     outline: none;
-    left: -12px;
+    position: relative;
 }
 
 .icon-search {
