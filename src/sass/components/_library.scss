@@ -1,3 +1,4 @@
+
 // header library
 
 .header-library {
@@ -22,6 +23,7 @@
     height: 216px;
   }
 
+
   @include tablet {
     background-image: linear-gradient(
         to right,
@@ -40,6 +42,7 @@
 
     height: 219px;
   }
+
   @include desktop {
     background-color: #2f303a;
     background-image: linear-gradient(
@@ -58,11 +61,13 @@
     }
   }
 
+
   height: 230px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
+
 
 .list__filmoteka_and_icon-link-library {
   display: flex;
@@ -129,11 +134,13 @@
     left: 0;
 
     background-color: rgba(255, 0, 27, 1);
+
   }
 }
 .btn-library__container {
   display: flex;
   justify-content: center;
+
   @include mobile {
     gap: 16px;
   }
@@ -145,6 +152,7 @@
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 1);
   color: rgba(255, 255, 255, 1);
+
   width: 152px;
   height: 44px;
   padding: auto;
@@ -161,6 +169,7 @@
     border: #ff6b01;
   }
 }
+
 
 // FT-11 Зверстати контейнер сторінки "My Library"
 // для правильного позиціонування карток фільмів
@@ -200,3 +209,4 @@
     width: calc((100% - 32px) / 3);
   }
 }
+
