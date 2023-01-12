@@ -1,38 +1,77 @@
-// FT-11 Зверстати контейнер сторінки "My Library" 
-// для правильного позиціонування карток фільмів 
-// (мобілка, планшет, робочий стіл)
 
-.list {
-    list-style: none;
+// header library
+
+.header-library {
+  position: relative;
+  @media screen and(max-width:767px) {
+    background-image: url('../images/mob_library_texture_1x.jpg');
+    @include retina {
+      background-image: url('../images/mob_library_texture_2x.jpg');
+    }
+    height: 216px;
   }
-  .my-library {
-    width: 320px;
-    padding: 20px 40px;
-    @include tablet {
-        padding: 60px 60px;
+
+  @media screen and(min-width:768px) {
+    background-image: url('../images/tab_library_texture_1x.jpg');
+    @include retina {
+      background-image: url('../images/tab_library_texture_2x.jpg');
     }
+
+    height: 219px;
   }
-  .my-library-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 20px;
-    @include tablet {
-        flex-direction: row;
-    gap: 32px;
-    }
-    @include desktop {
-        gap: 16px;
-    }
-  }
-  .my-library-item {
-    width: 280px;
-    // height: 438px;
-    // background-color: blue;
-    @include tablet {
-        width: calc((100% - 32px) / 2);
-    }
-    @include desktop {
-        width: calc((100% - 32px) / 3);
+  @media screen and(min-width:1200px) {
+    background-color: #2f303a;
+    background-image: url('../images/pc_library_texture_2x.jpg');
+    @include retina {
+      background-image: url('../images/pc_library_texture_1x.jpg');
     }
   }
+  height: 230px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.nav__link-my-library.current {
+  position: relative;
+  &::after {
+    display: block;
+    position: absolute;
+    background-color: rgba(255, 0, 27, 1);
+    width: 34px;
+    height: 3px;
+    content: '';
+  }
+}
+.btn-library__container {
+  display: flex;
+  justify-content: center;
+}
+.btn-library {
+  @media screen and(max-width:767px) {
+    margin-right: 16px;
+  }
+  @media screen and(min-width:768px) {
+    margin-right: 32px;
+  }
+
+  background-color: transparent;
+  border: 1px solid, #ffffff;
+  color: #ffffff;
+  width: 152px;
+  height: 44px;
+  padding: auto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 5px;
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    border: #ff6b01;
+  }
+}
+
+.list__filmoteka_and_icon-link {
+  text-decoration: none;
+}
