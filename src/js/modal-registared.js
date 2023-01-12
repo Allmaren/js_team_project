@@ -1,20 +1,14 @@
 import {
   onCloseModalByEscape,
   onCloseModalByClickBackdrop,
-  onCloseModal,
+  onToggleModal,
 } from './services/close-modal';
 
 refs = {
-  openModal: document.querySelector('.open-modal-register'),
-  backdrop: document.querySelector('.backdrop'),
-  closeBtnRegister: document.querySelector('.button-close-register'),
+  openModalBtn: document.querySelector('[data-modal-open-register]'),
+  modalRegister: document.querySelector('[data-modal-register]'),
+  closeModalBtn: document.querySelector('[data-modal-close-register]'),
 };
 
-refs.openModal.addEventListener('click', onOpenModal);
-
-function onOpenModal() {
-  refs.backdrop.classList.remove('is-hidden');
-  refs.closeBtnRegister.addEventListener('click', onCloseModal);
-  refs.backdrop.addEventListener('click', onCloseModalByClickBackdrop);
-  window.addEventListener('keydown', onCloseModalByEscape);
-}
+refs.openModalBtn.addEventListener('click', onToggleModal);
+refs.closeModalBtn.addEventListener('click', onToggleModal);
