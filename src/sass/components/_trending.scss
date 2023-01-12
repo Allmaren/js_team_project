@@ -1,82 +1,51 @@
-
 /* FT-06 Зверстати контейнер головної сторінки для правильного позиціонування
 карток фільмів (мобілка, планшет, робочий стіл) */
 
 .trending-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.container {
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    /* outline: 1px solid brown; */
-
-}
-
-@media screen and (min-width: 480px) {
-    .container {
-        width: 480px;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .container {
-        width: 768px;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .container {
-        width: 1200px;
-    }
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    /* transition: transform 250ms ease-out; */
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  /* transition: transform 250ms ease-out; */
 }
 
 .trending__collection {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 @media screen and (min-width: 768px) {
-    .trending__collection {
-        flex-direction: row;
-        gap: 32px;
-    }
+  .trending__collection {
+    flex-direction: row;
+    gap: 32px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .trending__collection {
-        gap: 16px;
-    }
+  .trending__collection {
+    gap: 16px;
+  }
 }
 
-
 .trending__item {
-    width: 280px;
+  width: 280px;
 }
 
 @media screen and (min-width: 768px) {
-    .trending__item {
-        width: calc((100% - 32px) / 2);
-    }
+  .trending__item {
+    width: calc((100% - 32px) / 2);
+  }
 }
 
-
 @media screen and (min-width: 1200px) {
-    .trending__item {
-        width: calc((100% - 32px) / 3);
-    }
+  .trending__item {
+    width: calc((100% - 32px) / 3);
+  }
 }
