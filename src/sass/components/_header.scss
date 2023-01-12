@@ -1,22 +1,20 @@
 .header {
   width: 100%;
   height: 230px;
-  
+
   background-size: cover;
   @media screen and(max-width:767px) {
-
     background-image: url('../images/mob_home_texture_1x.jpg');
     @include retina {
       background-image: url('../images/mob_home_texture_2x.jpg');
     }
   }
-  @include tablet{
+  @include tablet {
     background-image: url('../images/tab_home_texture_1x.jpg');
-   @include retina {
+    @include retina {
       background-image: url('../images/tab_home_texture_2x.jpg');
     }
   }
-
 
   @media screen and(min-width:1200px) {
     // background-color: #2f303a;
@@ -133,12 +131,12 @@
   justify-content: center;
 }
 
-.header-form__btn{
+.header-form__btn {
   color: #fff;
-    background: 0 0;
-    border: none;
-    outline: none;
-    position: relative;
+  background: 0 0;
+  border: none;
+  outline: none;
+  position: relative;
 }
 
 .icon-search {
@@ -159,4 +157,18 @@ li {
   width: 34px;
   height: 3px;
   content: '';
+}
+
+.header__warning-text-js {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.11;
+
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+
+  color: #ff001b;
 }
