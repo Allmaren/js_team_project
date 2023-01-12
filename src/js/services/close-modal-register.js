@@ -1,3 +1,5 @@
+import { onToggleModal } from '../modal-registared';
+
 export function onCloseModalByEscape(evt) {
   if (evt.code === 'Escape') {
     onToggleModal();
@@ -10,11 +12,4 @@ export function onCloseModalByClickBackdrop(evt) {
     onToggleModal();
     window.removeEventListener('keydown', onCloseModalByEscape);
   }
-}
-
-export function onToggleModal() {
-  refs.modalRegister.addEventListener('click', onCloseModalByClickBackdrop);
-  window.addEventListener('keydown', onCloseModalByEscape);
-  document.body.classList.toggle('no-scroll');
-  refs.modalRegister.classList.toggle('is-hidden');
 }
