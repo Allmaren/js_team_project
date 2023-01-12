@@ -1,38 +1,202 @@
-// FT-11 Зверстати контейнер сторінки "My Library" 
-// для правильного позиціонування карток фільмів 
+// header library
+
+.header-library {
+  background: rgba(0, 0, 0, 0.56);
+
+  position: relative;
+  @include mobile {
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url('../images/mob_library_texture_1x.jpg');
+    @include retina {
+      background-image: linear-gradient(
+          to right,
+          rgba(47, 48, 58, 0.4),
+          rgba(47, 48, 58, 0.4)
+        ),
+        url('../images/mob_library_texture_2x.jpg');
+    }
+    height: 216px;
+  }
+
+  @include tablet {
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url('../images/tab_library_texture_1x.jpg');
+    @include retina {
+      background-image: linear-gradient(
+          to right,
+          rgba(47, 48, 58, 0.4),
+          rgba(47, 48, 58, 0.4)
+        ),
+        url('../images/tab_library_texture_2x.jpg');
+    }
+
+    height: 219px;
+  }
+  @include desktop {
+    background-color: #2f303a;
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url('../images/pc_library_texture_2x.jpg');
+    @include retina {
+      background-image: linear-gradient(
+          to right,
+          rgba(47, 48, 58, 0.4),
+          rgba(47, 48, 58, 0.4)
+        ),
+        url('../images/pc_library_texture_1x.jpg');
+    }
+  }
+
+  height: 230px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.list__filmoteka_and_icon-link-library {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 8px;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
+.header__filmoteka-library {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.icon-filmoteka-library {
+  height: 24px;
+}
+
+.nav-library {
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.nav__list-library {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__link-home-library,
+.nav__link-my-library-library {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgba(255, 255, 255, 1);
+
+  text-decoration: none;
+  &:last-child {
+    margin-left: 39px;
+  }
+}
+.nav__link-my-library-library.current {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+
+    left: 0;
+
+    background-color: rgba(255, 0, 27, 1);
+  }
+}
+.btn-library__container {
+  display: flex;
+  justify-content: center;
+  @include mobile {
+    gap: 16px;
+  }
+  @include tablet {
+    gap: 32px;
+  }
+}
+.btn-library {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  width: 152px;
+  height: 44px;
+  padding: auto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    border: #ff6b01;
+  }
+}
+
+// FT-11 Зверстати контейнер сторінки "My Library"
+// для правильного позиціонування карток фільмів
 // (мобілка, планшет, робочий стіл)
 
 .list {
-    list-style: none;
+  list-style: none;
+}
+.my-library {
+  width: 320px;
+  padding: 20px 40px;
+  @include tablet {
+    padding: 60px 60px;
   }
-  .my-library {
-    width: 320px;
-    padding: 20px 40px;
-    @include tablet {
-        padding: 60px 60px;
-    }
-  }
-  .my-library-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 20px;
-    @include tablet {
-        flex-direction: row;
+}
+.my-library-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  @include tablet {
+    flex-direction: row;
     gap: 32px;
-    }
-    @include desktop {
-        gap: 16px;
-    }
   }
-  .my-library-item {
-    width: 280px;
-    // height: 438px;
-    // background-color: blue;
-    @include tablet {
-        width: calc((100% - 32px) / 2);
-    }
-    @include desktop {
-        width: calc((100% - 32px) / 3);
-    }
+  @include desktop {
+    gap: 16px;
   }
+}
+.my-library-item {
+  width: 280px;
+  // height: 438px;
+  // background-color: blue;
+  @include tablet {
+    width: calc((100% - 32px) / 2);
+  }
+  @include desktop {
+    width: calc((100% - 32px) / 3);
+  }
+}
