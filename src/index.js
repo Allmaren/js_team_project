@@ -1,5 +1,5 @@
 import * as addToLibrary from './js/add-to-library';
-import * as buttonUp from './js/button_up';
+// import * as buttonUp from './js/button_up';
 import * as fetchLibrary from './js/fetch-library';
 import * as fetchQuery from './js/fetch-query';
 import * as fetchTrends from './js/fetch-trend';
