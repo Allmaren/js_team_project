@@ -1,6 +1,6 @@
 import { onToggleModal } from './services/create-modal-register';
 
-refs = {
+const refs = {
   openModalBtn: document.querySelector('[data-modal-open-register]'),
   modalRegister: document.querySelector('[data-modal-register]'),
   closeModalBtn: document.querySelector('[data-modal-close-register]'),
