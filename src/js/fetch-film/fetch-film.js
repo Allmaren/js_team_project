@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 import FetchData from '../fetch-film/fetch-data';
 // import LoadMoreButton from './js/loadMoreBtn';
 
@@ -10,15 +10,19 @@ const inputRequest = new FetchData();
 //   hidden: true,
 // });
 
-const searchForm = document.querySelector('#search-form');
-const gallery = document.querySelector('.gallery');
-// const loadMoreBtn = document.querySelector('.load-more');
 
-searchForm.addEventListener('submit', searchHandler);
-loadMoreBtn.addEventListener('click', loadMoreHandler);
+const searchForm = document.querySelector('.header__form');
+const gallery = document.querySelector('.search-film__by-name-js');
+// const loadMoreBtn = document.querySelector('.load-more');
+const headerSearchContainer = document.querySelector('.header__search-cont');
+
+
+// searchForm.addEventListener('submit', searchHandler);
+
+// loadMoreBtn.addEventListener('click', loadMoreHandler);
 
 async function searchHandler(event) {
-  event.preventDefault(); //Чтоб не перезагружалась страничка при субмите формы
+  event.preventDefault();
 
   // if (!loadMoreBtn.classList.contains('is-hidden')) {
   //   loadMoreBtn.classList.add('is-hidden');
@@ -29,6 +33,8 @@ async function searchHandler(event) {
 
   try {
     if (inputRequest.searchQuery === '') {
+      const warningText = `<p class='header__warning-text-js'>Search result not successful. Enter the correct movie name and retry searching please.</p>`;
+      headerSearchContainer.insertAdjacentHTML('afterend', warningText);
       clearList();
       Notiflix.Notify.failure('Please enter your search data.');
     } else {
@@ -36,19 +42,21 @@ async function searchHandler(event) {
       // loadMoreButton.disable();
       const response = await inputRequest.makesRequest();
       const {
-        data: { hits, totalHits },
+        data: { results, total_results },
       } = response;
       clearList();
       // loadMoreButton.enable();
 
-      if (hits.length === 0) {
+      if (results.length === 0) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
       } else {
         // loadMoreBtn.classList.remove('is-hidden');
-        Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
-        createGalleryList(hits);
+        
+        Notiflix.Notify.success(`Hooray! We found ${total_results} images.`);
+        createGalleryList(results);
+
       }
 
       // loadMoreButton.show();
@@ -63,57 +71,71 @@ async function searchHandler(event) {
   }
 }
 
-async function loadMoreHandler() {
-  const response = await inputRequest.makesRequest();
-  const {
-    data: { hits },
-  } = response;
+// async function loadMoreHandler() {
+//   const response = await inputRequest.makesRequest();
+//   const {
+//     data: { hits },
+//   } = response;
 
-  if (hits.length === 0) {
-    Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
-  } else createGalleryList(hits);
-}
+//   if (hits.length === 0) {
+//     Notiflix.Notify.failure(
+//       'Sorry, there are no images matching your search query. Please try again.'
+//     );
+//   } else createGalleryList(hits);
+// }
 
 async function createGalleryList(event) {
-  const markup = event
-    .map(
-      ({
-        webformatURL,
-        largeImageURL,
-        tags,
-        likes,
-        views,
-        comments,
-        downloads,
-      }) => {
-        return `  <div class="photo-card">
-        <a href="${largeImageURL}">
-  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-  <div class="info">
-    <p class="info-item">
-      <b>Likes ${likes}</b>
-    </p>
-    <p class="info-item">
-      <b>Views ${views}</b>
-    </p>
-    <p class="info-item">
-      <b>Comments ${comments}</b>
-    </p>
-    <p class="info-item">
-      <b>Downloads ${downloads}</b>
-    </p>
-  </div>
+  const cardEl = films
+    .map(film => {
+      return `<li class="trending__item">
+    <img class=" card__img" src="https://www.themoviedb.org/t/p/w500${film.poster_path}"
+      onerror="this.onerror=null;this.src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'" loading="lazy"
+      alt="${film.title}" title="${film.title}" data-id="${film.id}" width="280"/>
+<h3 class="card__title">${film.title}</h3>
+<div class="card-field">
+    <p class="text__vote">${film.release_date}</p>
 </div>
-  `;
-      }
-    )
+
+</li>`;
+    })
     .join('');
+  //   const markup = event
+  //     .map(
+  //       ({
+  //         webformatURL,
+  //         largeImageURL,
+  //         tags,
+  //         likes,
+  //         views,
+  //         comments,
+  //         downloads,
+  //       }) => {
+  //         return `  <div class="photo-card">
+  //         <a href="${largeImageURL}">
+  //   <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+  //   <div class="info">
+  //     <p class="info-item">
+  //       <b>Likes ${likes}</b>
+  //     </p>
+  //     <p class="info-item">
+  //       <b>Views ${views}</b>
+  //     </p>
+  //     <p class="info-item">
+  //       <b>Comments ${comments}</b>
+  //     </p>
+  //     <p class="info-item">
+  //       <b>Downloads ${downloads}</b>
+  //     </p>
+  //   </div>
+  // </div>
+  //   `;
+  //       }
+  //     )
+  //     .join('');
 
-  gallery.insertAdjacentHTML('beforeend', markup);
+  gallery.insertAdjacentHTML('beforeend', cardEl);
 
-  simpleLightbox();
+  // simpleLightbox();
   scroll();
 }
 
@@ -121,19 +143,19 @@ function clearList() {
   gallery.innerHTML = '';
 }
 
-function simpleLightbox() {
-  let lightbox = new SimpleLightbox('.gallery a', {
-    captions: false,
-    captionDelay: 250,
-    enableKeyboard: true,
-    doubleTapZoom: 5,
-  });
-  lightbox.refresh();
-}
+// function simpleLightbox() {
+//   let lightbox = new SimpleLightbox('.gallery a', {
+//     captions: false,
+//     captionDelay: 250,
+//     enableKeyboard: true,
+//     doubleTapZoom: 5,
+//   });
+//   lightbox.refresh();
+// }
 
 function scroll() {
   const { height: cardHeight } = document
-    .querySelector('.gallery')
+    .querySelector('.container')
     .firstElementChild.getBoundingClientRect();
 
   window.scrollBy({

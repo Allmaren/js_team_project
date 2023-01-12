@@ -2,23 +2,21 @@ import axios from 'axios';
 
 // https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
-const API_KEY = '32213066-8c27353e21dcb9ee734ab239c';
+const API_KEY = '57c452bac8b733cbb049921c3a15e368';
 
 export default class FetchData {
   constructor() {
     this.searchQuery = '';
-    this.perPage = 20;
     this.page = 1;
   }
 
   async makesRequest() {
     const params = new URLSearchParams({
       api_key: API_KEY,
-      q: this.searchQuery,
+      query: this.searchQuery,
       language: 'en-US',
       include_adult: false,
       page: this.pageAmount,
-      per_page: this.perPage,
     });
     const url = `${BASE_URL}?${params}`;
     this.incrementPage();
