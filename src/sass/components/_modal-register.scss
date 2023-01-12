@@ -2,7 +2,7 @@
   overflow: hidden;
 }
 
-.backdrop {
+.backdrop-register {
   position: fixed;
   top: 0;
   left: 0;
@@ -28,7 +28,7 @@
   }
 }
 
-.modal-order {
+.register-order {
   display: flex;
   position: absolute;
   top: 50%;
@@ -85,7 +85,7 @@
   }
 }
 
-.modal-form {
+.register-form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -136,7 +136,7 @@
       border: 1px solid var(--text-accent);
     }
 
-    .modal-form__thumb & {
+    .register-form__thumb & {
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 42px;
@@ -152,8 +152,8 @@
     fill: #212121;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    .modal-form__input:hover + &,
-    .modal-form__input:focus + & {
+    .register-form__input:hover + &,
+    .register-form__input:focus + & {
       fill: var(--text-accent);
     }
   }

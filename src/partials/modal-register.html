@@ -4,40 +4,54 @@
 </button>
 
 <!-- Modal> -->
-<div class="backdrop is-hidden" data-modal-register>
-  <div class="modal-order">
+<div class="backdrop-register is-hidden" data-modal-register>
+  <div class="register-order">
     <button class="button-close-register" data-modal-close-register>
       <svg class="button-close-register__icon" width="18" height="18">
         <use href="./images/sprite.svg#close"></use>
       </svg>
     </button>
-    <form class="modal-form js-speaker-form">
-      <strong class="modal-form__title"
+    <form class="register-form">
+      <strong class="register-form__title"
         >To use advanced functionality, please register</strong
       >
-      <div class="modal-form__thumb">
-        <label for="email" class="modal-form__label">E-mail</label>
-        <div class="modal-form__wrapper">
-          <input class="modal-form__input email" type="email" />
-          <svg class="modal-form__icon" width="18" height="18">
+      <div class="register-form__thumb">
+        <label for="email" class="register-form__label">E-mail</label>
+        <div class="register-form__wrapper">
+          <input
+            class="register-form__input email"
+            type="email"
+            minlength="6"
+            required
+            data-email
+          />
+          <svg class="register-form__icon" width="18" height="18">
             <use href="./images/sprite.svg#email"></use>
           </svg>
         </div>
       </div>
-      <div class="modal-form__thumb">
-        <label for="password" class="modal-form__label">Password</label>
-        <div class="modal-form__wrapper">
-          <input class="modal-form__input password" type="password" />
-          <svg class="modal-form__icon" width="18" height="18">
+      <div class="register-form__thumb">
+        <label for="password" class="register-form__label">Password</label>
+        <div class="register-form__wrapper">
+          <input
+            class="register-form__input password"
+            type="password"
+            required
+            data-password
+          />
+          <svg class="register-form__icon" width="18" height="18">
             <use href="./images/sprite.svg#send"></use>
           </svg>
         </div>
       </div>
-      <div class="modal-form__button-wrapper">
-        <button class="modal-form__button" type="submit">Log In</button>
+      <div class="register-form__button-wrapper">
+        <button class="register-form__button" type="submit" data-log-in-btn>
+          Log In
+        </button>
         <button
-          class="modal-form__button modal-form__button-register"
+          class="register-form__button register-form__button-register"
           type="submit"
+          data-register-btn
         >
           Register
         </button>
