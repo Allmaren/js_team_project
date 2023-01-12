@@ -10,7 +10,7 @@ import './js/queue';
 import './js/watched';
 
 import './js/modal-film';
-import './js/modal-registration';
+import './js/modal-registared';
 import './js/modal-team';
 
 import './js/render';
