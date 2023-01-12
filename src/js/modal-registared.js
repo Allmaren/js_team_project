@@ -1,8 +1,4 @@
-import {
-  onCloseModalByEscape,
-  onCloseModalByClickBackdrop,
-  onToggleModal,
-} from './services/close-modal';
+import { onToggleModal } from './services/close-modal';
 
 refs = {
   openModalBtn: document.querySelector('[data-modal-open-register]'),
