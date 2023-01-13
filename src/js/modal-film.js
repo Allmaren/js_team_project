@@ -5,7 +5,6 @@ import 'animate.css';
 
 refs.closeModal.addEventListener('click', onCloseModalMovie);
 refs.openModal.addEventListener('click', onFetchApiMovieClick);
-window.addEventListener('click', onCloseModalMovie);
 window.addEventListener('keydown', onCloseModalMovieEscape);
 
 async function onFetchApiMovieClick(e) {
@@ -31,7 +30,6 @@ function toggleModal() {
 function onCloseModalMovie(e) {
   if (refs.backdropMovieMovie) {
     toggleModal();
-    window.removeEventListener('click', onCloseModalMovie);
   }
 }
 
