@@ -1,8 +1,4 @@
-// import SimpleLightbox from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
 import API from '../fetch-film/fetch-data';
-
-// const inputRequest = new FetchData();
 
 const searchForm = document.querySelector('.header__form');
 const gallery = document.querySelector('.search-film__by-name-js');
@@ -10,6 +6,7 @@ const headerSearchContainer = document.querySelector('.header__search-cont');
 const searchQuery = document.querySelector('.search-film__input');
 
 searchForm.addEventListener('submit', searchHandler);
+// searchQuery.addEventListener('click', inputHandler);
 
 function searchHandler(event) {
   event.preventDefault();
@@ -21,19 +18,16 @@ function searchHandler(event) {
   if (searchQuery.value === '') {
     const warningText = `<p class='header__warning-text-js'>Search result not successful. Enter the correct movie name and retry searching please.</p>`;
     headerSearchContainer.insertAdjacentHTML('beforeend', warningText);
-  } else {
   }
-
-  renderSearchingResults();
 }
-function renderSearchingResults(films) {
-  const cardEl = films
-    .map(film => {
+function renderSearchingResults(results) {
+  const cardEl = results
+    .map(result => {
       return `<li class="trending__item">
-    <img class=" card__img" src="https://www.themoviedb.org/t/p/w500${film.poster_path}"
+    <img class=" card__img" src="https://www.themoviedb.org/t/p/w500${result.poster_path}"
       onerror="this.onerror=null;this.src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'" loading="lazy"
-      alt="${film.title}" title="${film.title}" data-id="${film.id}" width="280"/>
-<h3 class="card__title">${film.title}</h3>
+      alt="${result.title}" title="${result.title}" data-id="${result.id}" width="280"/>
+<h3 class="card__title">${result.title}</h3>
 <div class="card-field">
     <p class="text__vote">${film.release_date}</p>
 </div>
@@ -41,9 +35,14 @@ function renderSearchingResults(films) {
     })
     .join('');
 
-  ul.innerHTML = '';
+  gallery.innerHTML = '';
   gallery.insertAdjacentHTML('beforeend', cardEl);
 }
+
+// function inputHandler(event) {
+//   const deletingWarning = document.querySelector('.header__warning-text-js');
+//   deletingWarning.remove();
+// }
 // //
 
 // // loadMoreBtn.addEventListener('click', loadMoreHandler);
