@@ -19,11 +19,14 @@ function createMovieItem({
       alt="${title}"
       loading="lazy"
     />
+    <div class="trailer-overlay">
+      <button type="button" class="fetch-trailer"><span class="play">▷</span></button>
+    </div>
   </div>
 
   <div class="info-thumb animate__animated animate__fadeInLeft">
     <table class="info">
-      <caption class="movie-title ">
+      <caption class="movie-title">
         ${title.toUpperCase()}
       </caption>
       <tbody class="info-wrapper">
@@ -32,7 +35,7 @@ function createMovieItem({
             <p class="characteristic">Vote / Votes</p>
           </td>
           <td class="description">
-            <span class="vote">${vote_average} </span>
+            <span class="vote">${vote_average.toFixed(1)} </span>
             <span class="slash">/</span>
             <span class="votes">${vote_count} </span>
           </td>
@@ -44,11 +47,11 @@ function createMovieItem({
           <td class="description">${popularity}</td>
         </tr>
         <tr class="table-row">
-              <td class="td">
-                <p class="characteristic">Original Title</p>
-              </td>
-              <td class="description">${title.toUpperCase()}</td>
-            </tr>
+          <td class="td">
+            <p class="characteristic">Original Title</p>
+          </td>
+          <td class="description">${title.toUpperCase()}</td>
+        </tr>
         <tr class="table-row">
           <td class="td">
             <p class="characteristic">Genre</p>
@@ -65,16 +68,17 @@ function createMovieItem({
         class="button-modal add-to-watched-btn"
         data-action="add-to-watched"
       >
-        add to Watched</button
+        ADD TO WATCHED</button
       ><button
         type="button"
         class="button-modal add-to-queue-btn"
         data-action="add-to-queue"
       >
-        add to queue
+        ADD TO QUEUE
       </button>
     </div>
   </div>
 </div>
+
 `;
 }

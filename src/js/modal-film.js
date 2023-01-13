@@ -5,11 +5,10 @@ import 'animate.css';
 
 refs.closeModal.addEventListener('click', onCloseModalMovie);
 refs.openModal.addEventListener('click', onFetchApiMovieClick);
-window.addEventListener('click', closeModal);
+window.addEventListener('click', onCloseModalMovie);
 window.addEventListener('keydown', onCloseModalMovieEscape);
 
 async function onFetchApiMovieClick(e) {
-  //   if (e.target === e.currentTarget) return;
   toggleModal();
   refs.modal.innerHTML = '';
   const ID_MOVIE = e.target.dataset.id;
@@ -26,11 +25,13 @@ async function onFetchApiMovieClick(e) {
 
 function toggleModal() {
   refs.backdropMovieMovie.classList.toggle('is_hidden-movie');
+  document.body.classList.toggle('no-scroll');
 }
 
 function onCloseModalMovie(e) {
   if (refs.backdropMovieMovie) {
     toggleModal();
+    window.removeEventListener('click', onCloseModalMovie);
   }
 }
 
