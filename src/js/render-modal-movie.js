@@ -26,7 +26,7 @@ function createMovieItem({
       <caption class="movie-title ">
         ${title.toUpperCase()}
       </caption>
-      <tbody>
+      <tbody class="info-wrapper">
         <tr class="table-row">
           <td class="td">
             <p class="characteristic">Vote / Votes</p>
