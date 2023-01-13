@@ -26,6 +26,7 @@
   </head>
   <body>
 
+
     <include src="./partials/header_home.html"></include>
     <include src="./partials/gallery.html"></include>
     <include src="./partials/pagination.html"></include>
@@ -38,6 +39,78 @@
     <include src="./partials/modal-register.html"></include>
     <include src="./partials/modal_team.html"></include>
 
+
+
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <ul class="nav__list">
+            <li>
+              <a href="./index.html" class="list__filmoteka_and_icon-link">
+                <h1 class="filmoteka-header">Filmoteka</h1>
+                <svg class="icon-filmoteka" width="24px" heigth="24px">
+                  <use href="../src/images/icon.svg#icon-film"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="nav__list-item">
+              <a href="./index.html" class="nav__link-home current">HOME</a>
+              <a href="" class="nav__link-my-library">MY LIBRARY</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__search-cont">
+          <form class="header__form">
+            <div class="input-container">
+              <input
+                type="text"
+                name="search-film"
+                id="search"
+                class="search-film__input"
+                placeholder="Movie search"
+              />
+              <svg class="icon-search" width="12px" heigth="12px">
+                <use href="../src/images/icon.svg#icon-search"></use>
+              </svg>
+            </div>
+          </form>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Trend movies list -- Надя Граб> -->
+      <section class="trending-section">
+        <div class="container">
+          <ul class="trending__collection"></ul>
+          
+          <div class="pagination-thumb">
+            <div id="tui-pagination-container" class="tui-pagination"></div>
+          </div>
+          <!-- <button type="button" id="buttonTop">
+              Up -->
+          <!-- <a href="#containerHeader"></a> -->
+          <!-- </button> -->
+        </div>
+      </section>
+    </main>
+    <footer>
+         <div class="container"></div>
+  <footer class="footer">
+    <div class="container footert-container">
+      <span class="footer__text" 
+        >&#169; 2022 | All Rights Reserved |&nbsp;</span
+      >
+      <span class="footer__second-line">
+        Developed with
+        <svg class="footer__icon" width="14" height="13">
+          <use href="/src/images/icon.svg#icon-favorite"></use>
+        </svg>
+        by &nbsp;<span class="footer-link" id="open-team-modal">
+          GoIT Students</span
+        >
+      </span>
+    </div>
+  </footer>
 
     <script type="module" src="index.js"></script>
   </body>
