@@ -31,13 +31,13 @@ export default async function renderCard(movies, ulSelector) {
         genre_ids,
       }) => {
         return `
-        <li class="card-item" data-id="${id}">
+        <li class="card-item" >
           <div class="card-item__img">
           <img src="${
             poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
               : './img/no_image.png'
-          }"  alt="${original_title}" loading="lazy">
+          }"  alt="${original_title}" data-id="${id}" loading="lazy">
           </div>
           <h3 class="card-item__title">${original_title}</h3>
           <p class="card-item__info">
