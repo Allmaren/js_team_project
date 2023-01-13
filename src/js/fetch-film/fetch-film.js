@@ -4,9 +4,10 @@ const searchForm = document.querySelector('.header__form');
 const gallery = document.querySelector('.search-film__by-name-js');
 const headerSearchContainer = document.querySelector('.header__search-cont');
 const searchQuery = document.querySelector('.search-film__input');
+const warningText = document.querySelector('.header__warning-text-js');
 
 searchForm.addEventListener('submit', searchHandler);
-// searchQuery.addEventListener('click', inputHandler);
+searchQuery.addEventListener('click', inputHandler);
 
 function searchHandler(event) {
   event.preventDefault();
@@ -16,8 +17,7 @@ function searchHandler(event) {
     .catch(error => console.log(error));
 
   if (searchQuery.value === '') {
-    const warningText = `<p class='header__warning-text-js'>Search result not successful. Enter the correct movie name and retry searching please.</p>`;
-    headerSearchContainer.insertAdjacentHTML('beforeend', warningText);
+    warningText.classList.remove('is-hidden-warn');
   }
 }
 function renderSearchingResults(results) {
@@ -39,11 +39,11 @@ function renderSearchingResults(results) {
   gallery.insertAdjacentHTML('beforeend', cardEl);
 }
 
-// function inputHandler(event) {
-//   const deletingWarning = document.querySelector('.header__warning-text-js');
-//   deletingWarning.remove();
-// }
-// //
+function inputHandler(event) {
+  const deletingWarning = document.querySelector('.header__warning-text-js');
+  deletingWarning.classList.add('is-hidden-warn');
+}
+//
 
 // // loadMoreBtn.addEventListener('click', loadMoreHandler);
 
