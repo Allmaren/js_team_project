@@ -34,7 +34,7 @@ refs.registerBtn.addEventListener('click', onCreateUser);
 refs.logInBtn.addEventListener('click', onLogIn);
 let userData = {};
 
-function onCreateUser(evt) {
+async function onCreateUser(evt) {
   evt.preventDefault();
 
   userData = {
@@ -44,12 +44,12 @@ function onCreateUser(evt) {
     queueMovies: ['222222'],
   };
 
-  createUser(userData);
+  const createNewUser = createUser(userData);
 
   refs.formEl.reset();
 }
 
-// Log In user on Firebase
+// Log In user on Firebase - using for button "LIBRARY"
 
 async function onLogIn(evt) {
   evt.preventDefault();

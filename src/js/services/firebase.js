@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, onValue, get, child } from 'firebase/database';
+import { getDatabase, ref, set, get, child } from 'firebase/database';
+import { commonError } from './error';
 import { Notify } from 'notiflix';
 
 const firebaseConfig = {
@@ -21,41 +22,40 @@ export function createUser({
   watchedMovies,
   queueMovies,
 }) {
-  set(ref(database, 'users/' + userEmail), {
-    userEmail,
-    userPassword,
-    watchedMovies,
-    queueMovies,
-  });
-  Notify.success(
-    `Hooray! You have registered successfully! Now you can add favorite movies and watch you library`,
-    {
-      timeout: 6000,
-      fontSize: '20px',
-    }
-  );
-}
-
-export function logInUser({ userEmail, userPassword }) {
-  const userRefPassword = ref(database, 'users/' + userEmail + '/userPassword');
-  // console.log('🚀  userRefPassword', userRefPassword._path.pieces_[1]);
-
-  const isUser = get(child(databaseRef, `users/${userEmail}`))
-    .then(snapshot => {
-      if (snapshot.exists()) {
-        return snapshot.val();
+  checkUser(userEmail)
+    .then(res => {
+      if (userEmail !== res.userEmail) {
+        set(ref(database, 'users/' + userEmail), {
+          userEmail,
+          userPassword,
+          watchedMovies,
+          queueMovies,
+        })
+          .then(res => {
+            Notify.success(
+              `Hooray! You have registered successfully! Now you can add favorite movies and watch you library`,
+              {
+                timeout: 6000,
+                fontSize: '20px',
+              }
+            );
+            return res;
+          })
+          .catch(error => commonError(error));
       } else {
-        Notify.warning(
-          'Wow-wow! You are not registered yet. Please click to button "Register"',
+        Notify.failure(
+          `Sorry, user "${userEmail}" already registered. Please log in`,
           {
             fontSize: '20px',
           }
         );
       }
     })
-    .catch(error => {
-      Notify.failure(`Something is wrong. Error "${error}". Try again`);
-    });
+    .catch(error => console.log(error));
+}
+
+export function logInUser({ userEmail, userPassword }) {
+  const isUser = checkUser(userEmail);
 
   if (isUser) {
     return isUser.then(res => {
@@ -68,19 +68,21 @@ export function logInUser({ userEmail, userPassword }) {
       }
     });
   }
+}
 
-  // if (isUser) {
-  //   get(child(databaseRef, `users/${userPassword}`))
-  //     .then(snapshot => {
-  //       if (snapshot.exists()) {
-  //         console.log('!!!');
-  //       } else {
-  //         Notify.failure('Sorry, your password is wrong. Try again');
-  //       }
-  //     })
-  //     .catch(error => {
-  //       Notify.failure(`Something is wrong. Error "${error}". Try again`);
-  //     });
-  // }
-  // return isUser;
+async function checkUser(userEmail) {
+  return await get(child(databaseRef, `users/${userEmail}`))
+    .then(snapshot => {
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        Notify.warning(
+          'Wow-wow! You are not registered yet. Please click to button "Register"',
+          {
+            fontSize: '20px',
+          }
+        );
+      }
+    })
+    .catch(error => commonError(error));
 }
