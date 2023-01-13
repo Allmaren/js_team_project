@@ -1,5 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, get, child } from 'firebase/database';
+import {
+  onAddWatchedMovies,
+  onAddQueueMovies,
+  onRemoveWatchedMovies,
+  onRemoveQueueMovies,
+} from './updateMovies';
 import { commonError } from './error';
 import { Notify } from 'notiflix';
 
@@ -36,22 +42,22 @@ export function createUser({
               `Hooray! You have registered successfully! Now you can add favorite movies and watch you library`,
               {
                 timeout: 6000,
-                fontSize: '20px',
+                fontSize: '16px',
               }
             );
             return res;
           })
           .catch(error => commonError(error));
       } else {
-        Notify.failure(
+        Notify.warning(
           `Sorry, user "${userEmail}" already registered. Please log in`,
           {
-            fontSize: '20px',
+            fontSize: '16px',
           }
         );
       }
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error.status));
 }
 
 export function logInUser({ userEmail, userPassword }) {
@@ -62,27 +68,68 @@ export function logInUser({ userEmail, userPassword }) {
       if (res.userPassword === userPassword) {
         return isUser;
       } else {
-        Notify.failure('Sorry, your password is wrong. Try again', {
-          fontSize: '20px',
-        });
+        Notify.failure(
+          'Sorry, your login or password is wrong. Try again or register',
+          {
+            fontSize: '16px',
+          }
+        );
       }
     });
   }
 }
 
-async function checkUser(userEmail) {
-  return await get(child(databaseRef, `users/${userEmail}`))
+async function checkUser(email) {
+  const check = await get(child(databaseRef, `users/${email}`))
     .then(snapshot => {
       if (snapshot.exists()) {
         return snapshot.val();
-      } else {
-        Notify.warning(
-          'Wow-wow! You are not registered yet. Please click to button "Register"',
-          {
-            fontSize: '20px',
-          }
-        );
+      } else if (email) {
+        return email;
       }
     })
     .catch(error => commonError(error));
+  return check;
 }
+
+// Update movies into watched or queue  - using for buttons "ADD" or "REMOVE"
+
+export async function updateMovies({ userEmail, movieId, type, action }) {
+  const allWatched = await allMoviesWatched(userEmail)
+    .then(res => res)
+    .catch(error => console.log(error.status));
+
+  const allQueue = await allMoviesQueue(userEmail)
+    .then(res => res)
+    .catch(error => console.log(error.status));
+
+  if (type === 'watched' && action === 'add' && allWatched) {
+    onAddWatchedMovies(database, userEmail, movieId, allWatched);
+  }
+
+  if (type === 'watched' && action === 'remove' && allWatched) {
+    onRemoveWatchedMovies(database, userEmail, movieId, allWatched);
+  }
+
+  if (type === 'queue' && action === 'add' && allQueue) {
+    onAddQueueMovies(database, userEmail, movieId, allQueue);
+  }
+
+  if (type === 'queue' && action === 'remove' && allQueue) {
+    onRemoveQueueMovies(database, userEmail, movieId, allQueue);
+  }
+}
+
+// Колбеки - усі фільми користувача:
+
+// - переглянуті
+export const allMoviesWatched = async userEmail =>
+  await get(child(databaseRef, `users/${userEmail}`)).then(
+    snapshot => snapshot.val().watchedMovies
+  );
+
+// - у черзі
+export const allMoviesQueue = async userEmail =>
+  await get(child(databaseRef, `users/${userEmail}`)).then(
+    snapshot => snapshot.val().queueMovies
+  );
