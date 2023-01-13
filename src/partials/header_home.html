@@ -1,4 +1,5 @@
 <header class="header">
+  <include src="./partials/modal-register.html"></include>
   <div class="container">
     <nav class="nav">
       <ul class="nav__list">
@@ -19,6 +20,7 @@
     <div class="header__search-cont">
       <form class="header__form">
         <div class="input-container">
+
           <input
             type="text"
             name="searchFilm"
@@ -27,6 +29,7 @@
             autocomplete="off"
             placeholder="Movie search"
           />
+
           <button type="submit" class="header-form__btn">
             <svg class="icon-search" width="12px" height="12px">
               <use href="../src/images/icon.svg#icon-search"></use>
@@ -34,6 +37,10 @@
           </button>
         </div>
       </form>
+      <p class='header__warning-text-js is-hidden-warn'>Search result not successful. Enter the correct movie name and
+        retry
+        searching
+        please.</p>
     </div>
   </div>
 </header>

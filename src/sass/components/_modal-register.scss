@@ -1,0 +1,213 @@
+.no-scroll {
+  overflow: hidden;
+}
+
+.backdrop-register {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: scroll;
+
+  @media screen and (max-width: 768px) {
+    padding: 30px;
+  }
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+
+  & .modal-order {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+.register-order {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: auto;
+  padding: 40px;
+  background-color: var(--accent-white);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (max-width: 768px) {
+    position: relative;
+  }
+
+  @include tablet {
+    max-width: 528px;
+    width: 100%;
+  }
+
+  .button-close-register {
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-black);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &__icon {
+      fill: currentColor;
+    }
+
+    &:hover .button-close-register__icon,
+    &:focus .button-close-register__icon {
+      color: var(--text-accent);
+    }
+  }
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: #212121;
+    margin-bottom: 30px;
+
+    @include desktop {
+      line-height: 1.15;
+    }
+  }
+
+  &__thumb {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  &__label {
+    font-size: 16px;
+    line-height: 1.17;
+    letter-spacing: 0.01em;
+    color: #757575;
+    margin-bottom: 4px;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__input {
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    width: 100%;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--text-accent);
+    }
+
+    .register-form__thumb & {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 42px;
+      padding-right: 12px;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    fill: #212121;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    .register-form__input:hover + &,
+    .register-form__input:focus + & {
+      fill: var(--text-accent);
+    }
+  }
+
+  &__button-wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    align-self: center;
+    color: var(--text-black);
+    background-color: var(--accent-white);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.88;
+    letter-spacing: 0.06em;
+    padding: 10px 48px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &__button-register {
+    background-color: var(--text-accent);
+    color: var(--accent-white);
+
+    &:hover,
+    &:focus {
+      background-color: #f48d48;
+    }
+  }
+}
+
+// коли зматчимо з реальними кнопками - треба видалити
+
+.open-modal-register {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
