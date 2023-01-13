@@ -30,22 +30,22 @@ img {
 
 @media screen and (min-width: 1280px) {
   .trending__collection {
-    gap: 16px;
+    gap: 32px 16px;
   }
 }
 
-.trending__item {
-  width: 280px;
-}
+// .trending__item {
+//   width: 280px;
+// }
 
-@media screen and (min-width: 768px) {
-  .trending__item {
-    width: calc((100% - 32px) / 2);
-  }
-}
+// @media screen and (min-width: 768px) {
+//   .trending__item {
+//     width: calc((100% - 32px) / 2);
+//   }
+// }
 
-@media screen and (min-width: 1200px) {
-  .trending__item {
-    width: calc((100% - 32px) / 3);
-  }
-}
+// @media screen and (min-width: 1200px) {
+//   .trending__item {
+//     width: calc((100% - 32px) / 3);
+//   }
+// }
