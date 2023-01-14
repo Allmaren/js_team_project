@@ -8,6 +8,9 @@ refs.openModal.addEventListener('click', onFetchApiMovieClick);
 window.addEventListener('keydown', onCloseModalMovieEscape);
 
 async function onFetchApiMovieClick(e) {
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
   toggleModal();
   refs.modal.innerHTML = '';
   const ID_MOVIE = e.target.dataset.id;
