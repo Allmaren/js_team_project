@@ -31,7 +31,9 @@ export default async function renderCard(movies, ulSelector) {
               : ''
             : 'No genre'
         } </span> <span>${release_date.slice(0, 4)}</span>
-            <span class="card-item__vote"> ${vote_average.toFixed(1)}</span>
+            <span class="card-item__vote"> ${
+              vote_average ? vote_average.toFixed(1) : '0'
+            }</span>
           </p>
         </li>`;
       }
