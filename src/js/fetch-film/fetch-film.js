@@ -20,15 +20,16 @@ function searchHandler(event) {
   if (inputQuery === '') {
     warningText.classList.remove('is-hidden-warn');
   } else {
-    API.fetchData(searchQuery).then(films => {
-      console.log(films.length);
-      if (films.length >= 1) {
-        gallery.innerHTML = '';
-        renderCard(films, gallery).catch(error => console.log(error));
-      } else {
-        warningText.classList.remove('is-hidden-warn');
-      }
-    });
+    API.fetchData(searchQuery)
+      .then(data => data.results)
+      .then(films => {
+        if (films.length >= 1) {
+          gallery.innerHTML = '';
+          renderCard(films, gallery).catch(error => console.log(error));
+        } else {
+          warningText.classList.remove('is-hidden-warn');
+        }
+      });
   }
 }
 function inputHandler(event) {
