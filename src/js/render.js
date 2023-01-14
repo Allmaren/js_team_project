@@ -16,7 +16,7 @@ export default async function renderCard(movies, ulSelector) {
           <img src="${
             poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : './img/no_image.png'
+              : './images/no_image.png'
           }"  alt="${original_title}" data-id="${id}" loading="lazy">
           </div>
           <h3 class="card-item__title">${original_title}</h3>
