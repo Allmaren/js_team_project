@@ -1,3 +1,7 @@
+
+import addPagination from './pagination';
+import createPagination from './pagination';
+
 // const refs = {
 //     list: document.querySelector(".list"),
 //     cardItem: document.querySelector(".card-item-wrap")
@@ -58,6 +62,8 @@ export default async function renderCard(movies, ulSelector) {
     )
     .join('');
   ulSelector.insertAdjacentHTML('beforeend', cardElem);
+
+  createPagination()
 }
 const genreList = {};
 async function getGenreList() {
