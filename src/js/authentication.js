@@ -1,11 +1,9 @@
-
 import {
   onCloseModalByEscape,
   onCloseModalByClickBackdrop,
 } from './services/close-modal-register';
 import { createUser, logInUser, updateMovies } from './services/firebase';
 import { Notify } from 'notiflix';
-
 
 const refs = {
   openModalBtn: document.querySelector('[data-modal-open-register]'), //треба видалити
@@ -34,14 +32,12 @@ refs.removeWatched.addEventListener('click', onRemoveWatched); //треба ви
 refs.addQueue.addEventListener('click', onAddQueue); //треба видалити
 refs.removeQueue.addEventListener('click', onRemoveQueue); //треба видалити
 
-
 export function onToggleModal() {
   refs.modalRegister.addEventListener('click', onCloseModalByClickBackdrop);
   window.addEventListener('keydown', onCloseModalByEscape);
   document.body.classList.toggle('no-scroll');
   refs.modalRegister.classList.toggle('is-hidden');
 }
-
 
 // Create user on Firebase
 refs.formEl.addEventListener('submit', onCreateUser, onLogIn);
@@ -61,27 +57,19 @@ async function onCreateUser(evt) {
 
   createUser(userData);
 
-
-  const { userEmail, userPassword, watchedMovies, queueMovies } = userData;
-
-  firebaseCreateUser(userEmail, userPassword, watchedMovies, queueMovies);
-
   refs.formEl.reset();
   onToggleModal();
 }
 
 // Log In user on Firebase - using for button "LIBRARY"
 
-
 async function onLogIn(evt) {
-
   evt.preventDefault();
 
   userData = {
     userEmail: refs.emailEl.value,
     userPassword: refs.passwordEl.value,
   };
-
 
   const userMovies = await logInUser(userData)
     .then(isUser)
@@ -107,11 +95,6 @@ function isUser({ userEmail, watchedMovies, queueMovies }) {
     watchedMovies,
     queueMovies,
   });
-
-  const { userEmail, userPassword } = userData;
-
-  refs.formEl.reset();
-
 }
 
 //треба видалити цю функції

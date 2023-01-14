@@ -1,4 +1,4 @@
-import { onToggleModal } from '../modal-registared';
+import { onToggleModal } from '../authentication';
 
 export function onCloseModalByEscape(evt) {
   if (evt.code === 'Escape') {
