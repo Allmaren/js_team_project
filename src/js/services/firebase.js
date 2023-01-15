@@ -39,7 +39,7 @@ export async function createUser({
         })
           .then(res => {
             Notify.success(
-              `Hooray! You have registered successfully! Now you can add favorite movies and watch you library`,
+              `Hooray! You have registered successfully! Now please log in and can add favorite movies and watch you library`,
               {
                 timeout: 6000,
                 fontSize: '16px',
