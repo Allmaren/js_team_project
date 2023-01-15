@@ -5,6 +5,8 @@ import {
 import { createUser, logInUser, updateMovies } from './services/firebase';
 import { Notify } from 'notiflix';
 
+const STORAGE_KEY = 'user-id';
+
 const refs = {
   openModalBtn: document.querySelector('[data-modal-open-register]'), //треба видалити
   addWatched: document.querySelector('[data-add-watched]'), //треба видалити
@@ -51,11 +53,13 @@ async function onCreateUser(evt) {
   userData = {
     userEmail: refs.emailEl.value,
     userPassword: refs.passwordEl.value,
-    watchedMovies: [1, 2, 3],
+    watchedMovies: [1, 2, 3, 315162],
     queueMovies: [11, 22, 33],
   };
 
   createUser(userData);
+  const { userEmail } = userData;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
 
   refs.formEl.reset();
   onToggleModal();
@@ -77,6 +81,8 @@ async function onLogIn(evt) {
       refs.formEl.reset();
       console.log(error);
     });
+  const { userEmail } = userData;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
 
   if (userMovies) {
     onToggleModal();
