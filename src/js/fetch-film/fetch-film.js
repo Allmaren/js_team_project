@@ -4,7 +4,7 @@ import renderCard from '../render';
 const searchForm = document.querySelector('.header__form');
 const gallery = document.querySelector('.search-film__by-name-js');
 const headerSearchContainer = document.querySelector('.header__search-cont');
-let searchQuery = document.querySelector('.search-film__input');
+const searchQuery = document.querySelector('.search-film__input');
 const warningText = document.querySelector('.header__warning-text-js');
 
 // console.log(searchQuery.value);
@@ -19,11 +19,17 @@ function searchHandler(event) {
 
   if (inputQuery === '') {
     warningText.classList.remove('is-hidden-warn');
-  } else if (inputQuery !== '') {
-    API.fetchData(searchQuery).then(films => {
-      gallery.innerHTML = '';
-      renderCard(films, gallery).catch(error => console.log(error));
-    });
+  } else {
+    API.fetchData(searchQuery)
+      .then(data => data.results)
+      .then(films => {
+        if (films.length >= 1) {
+          gallery.innerHTML = '';
+          renderCard(films, gallery).catch(error => console.log(error));
+        } else {
+          warningText.classList.remove('is-hidden-warn');
+        }
+      });
   }
 }
 function inputHandler(event) {

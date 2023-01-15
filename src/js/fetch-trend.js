@@ -1,5 +1,6 @@
 import axios from 'axios';
 import renderCard from './render';
+import Pagination from 'tui-pagination';
 
 const ul = document.querySelector('.trending__collection');
 
@@ -7,35 +8,33 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const TRENDING = 'trending/movie/week';
 const API_KEY = '1d8f1c2313e3ed4d118cc85bb96261b9';
 
-getFetchTrending()
-  .then(films => renderCard(films, ul))
-  .catch(error => console.log(error));
+const container = document.getElementById('pagination');
+const paginatorOptions = {
+  // totalItems: 20,
+  itemsPerPage: 20,
+  visiblePages: 5,
+};
 
-function getFetchTrending() {
+getFetchTrending().then(() => {
+  new Pagination(container, paginatorOptions).on(
+    'afterMove',
+    function (eventData) {
+      // console.log('The current page is ' + eventData.page);
+      getFetchTrending(eventData.page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  );
+});
+
+function getFetchTrending(page = 1) {
   return fetch(
-    `${BASE_URL}${TRENDING}?api_key=${API_KEY}&language=en-US&page=1&include_adult=false`
+    `${BASE_URL}${TRENDING}?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false`
   )
     .then(response => response.json())
-    .then(data => data.results);
+    .then(data => {
+      paginatorOptions.totalItems = data.total_results;
+      return data.results;
+    })
+    .then(films => renderCard(films, ul))
+    .catch(error => console.log(error));
 }
-
-// function renderTrendingCard(films) {
-//   const cardEl = films
-//     .map(film => {
-//       return `<li class="trending__item">
-//     <img class=" card__img" src="https://www.themoviedb.org/t/p/w500${film.poster_path}"
-//       onerror="this.onerror=null;this.src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'" loading="lazy"
-//       alt="${film.title}" title="${film.title}" data-id="${film.id}" width="280"/>
-// <h3 class="card__title">${film.title}</h3>
-// <div class="card-field">
-//     <p class="text__vote">${film.release_date}</p>
-
-// </div>
-
-// </li>`;
-//     })
-//     .join('');
-
-//   ul.insertAdjacentHTML('beforeend', cardEl);
-//   // return cardEl;
-// }

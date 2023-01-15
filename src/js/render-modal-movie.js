@@ -40,7 +40,9 @@ function createMovieItem({
             <p class="characteristic">Vote / Votes</p>
           </td>
           <td class="description">
-            <span class="vote">${vote_average.toFixed(1)} </span>
+            <span class="vote">${
+              vote_average ? vote_average.toFixed(1) : '0'
+            } </span>
             <span class="slash">/</span>
             <span class="votes">${vote_count} </span>
           </td>
