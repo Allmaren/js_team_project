@@ -1,12 +1,22 @@
-let parent = document.getElementById('buttonTop').parentElement;
-//let child = document.getElementById('buttonTop a').childElement;
-
-while (parent) {
-    const hasOverflow = getComputedStyle(parent).overflow;
-    if (hasOverflow !== 'visible') {
-        console.log(hasOverflow, parent);
+window.onload = function() { 
+    //window.scroll(x,y)
+var scrolled;
+var timer;
+document.getElementById('buttonTop').onclick = function() {
+    scrolled = window.pageYOffset;
+    console.log(scrolled);
+    //window.scrollTo(0,0);
+    scrollToTop();
+}
+function scrollToTop() {
+    if(scrolled > 0) {
+        window.scrollTo(0, scrolled);
+        scrolled = scrolled - 100;
+        timer = setTimeout(scrollToTop, 100);
     }
     else {
-       // console.log(hasOverflow, child);
+        clearTimeout(timer);
+       window.scrollTo(0,0);
+     }
     }
 }
