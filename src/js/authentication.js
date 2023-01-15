@@ -2,9 +2,10 @@ import {
   onCloseModalByEscape,
   onCloseModalByClickBackdrop,
 } from './services/close-modal-register';
-import { USER_ID } from './services/userID';
 import { createUser, logInUser, updateMovies } from './services/firebase';
 import { Notify } from 'notiflix';
+
+const STORAGE_KEY = 'user-id';
 
 const refs = {
   openModalBtn: document.querySelector('[data-modal-open-register]'), //треба видалити
@@ -57,6 +58,8 @@ async function onCreateUser(evt) {
   };
 
   createUser(userData);
+  const { userEmail } = userData;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
 
   refs.formEl.reset();
   onToggleModal();
@@ -78,6 +81,8 @@ async function onLogIn(evt) {
       refs.formEl.reset();
       console.log(error);
     });
+  const { userEmail } = userData;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
 
   if (userMovies) {
     onToggleModal();
