@@ -1,6 +1,11 @@
+import { createButtons } from './services/create-buttons';
+
 export function renderModalMarkup(element, object) {
   element.insertAdjacentHTML('beforeend', createMovieItem(object));
+  const buttons = document.querySelector('.about-descr');
+  buttons.insertAdjacentHTML('beforeend', createButtons());
 }
+
 function createMovieItem({
   title,
   vote_average,
@@ -64,21 +69,6 @@ function createMovieItem({
     </table>
     <h3 class="about">About</h3>
     <p class="about-descr">${overview}</p>
-    <div class="buttons-wrapper">
-      <button
-        type="button"
-        class="button-modal add-to-watched-btn"
-        data-action="add-to-watched"
-      >
-        ADD TO WATCHED</button
-      ><button
-        type="button"
-        class="button-modal add-to-queue-btn"
-        data-action="add-to-queue"
-      >
-        ADD TO QUEUE
-      </button>
-    </div>
   </div>
 </div>
 

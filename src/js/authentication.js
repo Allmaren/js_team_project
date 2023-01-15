@@ -2,6 +2,7 @@ import {
   onCloseModalByEscape,
   onCloseModalByClickBackdrop,
 } from './services/close-modal-register';
+import { USER_ID } from './services/userID';
 import { createUser, logInUser, updateMovies } from './services/firebase';
 import { Notify } from 'notiflix';
 
@@ -51,7 +52,7 @@ async function onCreateUser(evt) {
   userData = {
     userEmail: refs.emailEl.value,
     userPassword: refs.passwordEl.value,
-    watchedMovies: [1, 2, 3],
+    watchedMovies: [1, 2, 3, 315162],
     queueMovies: [11, 22, 33],
   };
 

@@ -22,13 +22,13 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const databaseRef = ref(getDatabase());
 
-export function createUser({
+export async function createUser({
   userEmail,
   userPassword,
   watchedMovies,
   queueMovies,
 }) {
-  checkUser(userEmail)
+  await checkUser(userEmail)
     .then(res => {
       if (userEmail !== res.userEmail) {
         set(ref(database, 'users/' + userEmail), {
@@ -79,8 +79,8 @@ export function logInUser({ userEmail, userPassword }) {
   }
 }
 
-async function checkUser(email) {
-  const check = await get(child(databaseRef, `users/${email}`))
+function checkUser(email) {
+  const check = get(child(databaseRef, `users/${email}`))
     .then(snapshot => {
       if (snapshot.exists()) {
         return snapshot.val();
