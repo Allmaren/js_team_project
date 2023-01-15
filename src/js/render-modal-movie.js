@@ -1,5 +1,8 @@
+import { initTrailerListener } from './watched.js'
+
 export function renderModalMarkup(element, object) {
   element.insertAdjacentHTML('beforeend', createMovieItem(object));
+  initTrailerListener(element, object.id);
 }
 function createMovieItem({
   title,
