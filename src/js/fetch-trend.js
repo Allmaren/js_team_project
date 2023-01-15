@@ -21,7 +21,7 @@ getFetchTrending().then(() => {
     function (eventData) {
       // console.log('The current page is ' + eventData.page);
       getFetchTrending(eventData.page);
-      window.scroll(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   );
 });
