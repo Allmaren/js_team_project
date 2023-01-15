@@ -81,8 +81,6 @@ async function onLogIn(evt) {
       refs.formEl.reset();
       console.log(error);
     });
-  const { userEmail } = userData;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
 
   if (userMovies) {
     onToggleModal();
@@ -96,6 +94,7 @@ function isUser({ userEmail, watchedMovies, queueMovies }) {
   Notify.success(`You have logged successfully! Enjoy watching movies`, {
     fontSize: '16px',
   });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
   return (userData = {
     userEmail,
     watchedMovies,
