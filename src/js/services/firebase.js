@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const databaseRef = ref(getDatabase());
+export const databaseRef = ref(getDatabase());
 
 export async function createUser({
   userEmail,
@@ -94,7 +94,12 @@ function checkUser(email) {
 
 // Update movies into watched or queue  - using for buttons "ADD" or "REMOVE"
 
-export async function updateMovies({ userEmail, movieId, type, action }) {
+export async function updateMovies(userEmail, movieId, button) {
+  const refs = {
+    watchedButton: document.querySelector('.add-to-watched-btn'),
+    queueButton: document.querySelector('.add-to-queue-btn'),
+  };
+
   const allWatched = await allMoviesWatched(userEmail)
     .then(res => res)
     .catch(error => console.log(error.status));
@@ -103,20 +108,24 @@ export async function updateMovies({ userEmail, movieId, type, action }) {
     .then(res => res)
     .catch(error => console.log(error.status));
 
-  if (type === 'watched' && action === 'add' && allWatched) {
-    onAddWatchedMovies(database, userEmail, movieId, allWatched);
+  if (button === 'add to watched' && allWatched) {
+    await onAddWatchedMovies(database, userEmail, movieId, allWatched);
+    refs.watchedButton.textContent = 'REMOVE TO WATCHED';
   }
 
-  if (type === 'watched' && action === 'remove' && allWatched) {
-    onRemoveWatchedMovies(database, userEmail, movieId, allWatched);
+  if (button === 'remove to watched' && allWatched) {
+    await onRemoveWatchedMovies(database, userEmail, movieId, allWatched);
+    refs.watchedButton.textContent = 'ADD TO WATCHED';
   }
 
-  if (type === 'queue' && action === 'add' && allQueue) {
-    onAddQueueMovies(database, userEmail, movieId, allQueue);
+  if (button === 'add to queue' && allQueue) {
+    await onAddQueueMovies(database, userEmail, movieId, allQueue);
+    refs.queueButton.textContent = 'REMOVE TO QUEUE';
   }
 
-  if (type === 'queue' && action === 'remove' && allQueue) {
-    onRemoveQueueMovies(database, userEmail, movieId, allQueue);
+  if (button === 'remove to queue' && allQueue) {
+    await onRemoveQueueMovies(database, userEmail, movieId, allQueue);
+    refs.queueButton.textContent = 'ADD TO QUEUE';
   }
 }
 

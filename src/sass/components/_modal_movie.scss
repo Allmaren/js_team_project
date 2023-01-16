@@ -272,10 +272,11 @@ table tr {
 
 .buttons-wrapper {
   display: flex;
+  align-items: center;
 }
 
 .add-to-watched-btn {
-  padding: 6px 27px;
+  padding: 6px 20px;
 
   margin-right: 20px;
 
@@ -309,11 +310,11 @@ table tr {
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 125px;
+    width: 145px;
   }
 
   @media screen and (min-width: 1024px) {
-    width: 136px;
+    width: 146px;
   }
 }
 
@@ -346,12 +347,12 @@ table tr {
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 125px;
+    width: 145px;
     padding: 12px 7px;
   }
 
   @media screen and (min-width: 1024px) {
-    width: 136px;
+    width: 146px;
     padding: 12px 7px;
   }
 }
@@ -374,7 +375,7 @@ table tr {
   color: white;
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms  cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: rgba(0, 0, 0, 0);
   border: 3px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
@@ -401,22 +402,17 @@ table tr {
   height: 200px;
   z-index: 800000;
 
-
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     width: 704px;
     height: 400px;
-
-
   }
 
   @media screen and (min-width: 1024px) {
     width: 800px;
     height: 480px;
-
-
   }
 }
-.video_trailer{
+.video_trailer {
   top: 70px;
   left: 50%;
   transform: translate(-50%);
@@ -426,24 +422,18 @@ table tr {
   z-index: 70000;
   background: #545454;
 
-
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     width: 704px;
     height: 400px;
-
-
   }
 
   @media screen and (min-width: 1024px) {
     width: 800px;
     height: 480px;
-
-
   }
 }
 
-
-.trailer-close{
+.trailer-close {
   width: 30px;
   height: 30px;
   position: absolute;
@@ -456,14 +446,10 @@ table tr {
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     left: 95%;
     top: 2%;
-
   }
 
   @media screen and (min-width: 1024px) {
     left: 95%;
     top: 2%;
-
-
   }
-
 }
