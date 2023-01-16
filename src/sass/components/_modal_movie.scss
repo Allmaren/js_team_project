@@ -1,5 +1,5 @@
 .backdrop-movie {
-  overflow: none;
+  overflow: hidden;
   position: fixed;
 
   width: 100%;
@@ -295,7 +295,7 @@ table tr {
 
   @media screen and (min-width: 768px) {
     margin-right: 15px;
-    padding: 12 7 12 7;
+    padding: 12px 7px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -337,12 +337,12 @@ table tr {
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     width: 125px;
-    padding: 12 7 12 7;
+    padding: 12px 7px;
   }
 
   @media screen and (min-width: 1024px) {
     width: 136px;
-    padding: 12 7 12 7;
+    padding: 12px 7px;
   }
 }
 
@@ -362,6 +362,12 @@ table tr {
   width: 68px;
   height: 68px;
   color: white;
+  
+  
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms  cubic-bezier(0.4, 0, 0.2, 1);
+
 
   background-color: rgba(0, 0, 0, 0);
   border: 3px solid rgba(255, 255, 255, 0.8);
@@ -387,3 +393,76 @@ table tr {
 }
 
 // --- КНОПКА ПЛЕЙ ТРЕЙЛЕР
+
+.video_frame {
+  position: absolute;
+  width: 280px;
+  height: 200px;
+  z-index: 800000;
+
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 704px;
+    height: 400px;
+
+
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 800px;
+    height: 480px;
+
+
+  }
+}
+.video_trailer{
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%);
+  position: fixed;
+  width: 280px;
+  height: 200px;
+  z-index: 70000;
+  background: #545454;
+
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 704px;
+    height: 400px;
+
+
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 800px;
+    height: 480px;
+
+
+  }
+}
+
+
+.trailer-close{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 9000000;
+  left: 88%;
+  top: 2%;
+  background: #212121;
+  color: #f7f7f7;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    left: 95%;
+    top: 2%;
+
+  }
+
+  @media screen and (min-width: 1024px) {
+    left: 95%;
+    top: 2%;
+
+
+  }
+
+}
