@@ -3,11 +3,12 @@ import { refs } from './refs';
 import axios from 'axios';
 import 'animate.css';
 
-refs.closeModal.addEventListener('click', onCloseModalMovie);
 refs.openModal.addEventListener('click', onFetchApiMovieClick);
-window.addEventListener('keydown', onCloseModalMovieEscape);
 
 async function onFetchApiMovieClick(e) {
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
   toggleModal();
   refs.modal.innerHTML = '';
   const ID_MOVIE = e.target.dataset.id;
@@ -23,28 +24,31 @@ async function onFetchApiMovieClick(e) {
 }
 
 function toggleModal() {
-  refs.backdropMovieMovie.classList.toggle('is_hidden-movie');
+  refs.backdropMovie.classList.toggle('is_hidden-movie');
   document.body.classList.toggle('no-scroll');
+
+  window.addEventListener('keydown', onCloseModalMovieEscape);
+  refs.closeModal.addEventListener('click', onCloseModalMovie);
+  refs.backdropMovie.addEventListener('click', onCLoseBackdropMovie);
 }
 
-function onCloseModalMovie(e) {
-  if (refs.backdropMovieMovie) {
+function onCloseModalMovie() {
+  if (refs.backdropMovie) {
     toggleModal();
+    window.removeEventListener('keydown', onCloseModalMovieEscape);
+    refs.backdropMovie.removeEventListener('click', onCLoseBackdropMovie);
   }
 }
 
 function onCloseModalMovieEscape(e) {
   if (e.key === 'Escape') {
-    onCloseModalMovie();
+    toggleModal();
+    window.removeEventListener('keydown', onCloseModalMovieEscape);
   }
 }
 
-// function closeModal() {
-//   if (refs.backdropMovieMovie.classList.contains('is_hidden-movie')) {
-//     return;
-//   }
-//   toggleModal();
-//   window.removeEventListener('click', closeModal);
-// }
-//
-//
+function onCLoseBackdropMovie() {
+  toggleModal();
+  window.removeEventListener('keydown', onCloseModalMovieEscape);
+  refs.closeModal.removeEventListener('click', onCloseModalMovie);
+}

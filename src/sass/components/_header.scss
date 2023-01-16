@@ -80,14 +80,15 @@
 }
 
 .header__search-cont {
-  padding-bottom: 92px;
+  // padding-bottom: 92px;
+  padding-bottom: 40px;
   @include desktop {
-    padding-bottom: 80px;
+    // padding-bottom: 80px;
   }
 }
 
 input:-webkit-autofill {
-        -webkit-transition-delay: 999999s;
+  -webkit-transition-delay: 999999s;
 }
 
 .input-container {
@@ -113,7 +114,7 @@ input:-webkit-autofill {
   }
   &::placeholder {
     color: #fff;
-    
+
     border: none;
     outline: none;
     background: transparent;
@@ -138,10 +139,10 @@ input:-webkit-autofill {
 .header-form__btn {
   color: #fff;
 
-    background: 0 0;
-    border: none;
-    outline: none;
-    position: relative;
+  background: 0 0;
+  border: none;
+  outline: none;
+  position: relative;
 }
 
 .icon-search {

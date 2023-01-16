@@ -1,6 +1,14 @@
+import { initTrailerListener } from './watched.js'
+import { createButtons } from './services/create-buttons';
+
 export function renderModalMarkup(element, object) {
   element.insertAdjacentHTML('beforeend', createMovieItem(object));
+  initTrailerListener(element, object.id);
+  const buttons = document.querySelector('.about-descr');
+  buttons.insertAdjacentHTML('beforeend', createButtons());
+
 }
+
 function createMovieItem({
   title,
   vote_average,
@@ -35,7 +43,9 @@ function createMovieItem({
             <p class="characteristic">Vote / Votes</p>
           </td>
           <td class="description">
-            <span class="vote">${vote_average.toFixed(1)} </span>
+            <span class="vote">${
+              vote_average ? vote_average.toFixed(1) : '0'
+            } </span>
             <span class="slash">/</span>
             <span class="votes">${vote_count} </span>
           </td>
@@ -62,21 +72,6 @@ function createMovieItem({
     </table>
     <h3 class="about">About</h3>
     <p class="about-descr">${overview}</p>
-    <div class="buttons-wrapper">
-      <button
-        type="button"
-        class="button-modal add-to-watched-btn"
-        data-action="add-to-watched"
-      >
-        ADD TO WATCHED</button
-      ><button
-        type="button"
-        class="button-modal add-to-queue-btn"
-        data-action="add-to-queue"
-      >
-        ADD TO QUEUE
-      </button>
-    </div>
   </div>
 </div>
 
