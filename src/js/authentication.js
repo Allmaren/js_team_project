@@ -14,7 +14,7 @@ const refs = {
   formEl: document.querySelector('.register-form'),
   logInBtn: document.querySelector('[data-log-in-btn]'),
   registerBtn: document.querySelector('[data-register-btn]'),
-  emailEl: document.querySelector('[data-email]'),
+  emailEl: document.querySelector('[data-login]'),
   passwordEl: document.querySelector('[data-password]'),
 };
 
