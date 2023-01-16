@@ -1,0 +1,134 @@
+.form-switch {
+  //   display: inline-block;
+  display: block;
+  cursor: pointer;
+  color: #ffffff;
+  margin-left: 190px;
+  // position: absolute;
+  // bottom: 10px;
+  // right: 15px;
+  @include tablet {
+    //     top: 170px;
+    //     right: 15px;
+    margin-left: 635px;
+  }
+  @include desktop {
+    // top: 170px;
+    // right: 90px;
+    margin-left: 1120px;
+  }
+}
+.form-switch span {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  width: 50px;
+  height: 27px;
+  background-color: #e6e6e6;
+  border-radius: 23px;
+  vertical-align: text-bottom;
+  transition: all 0.3s linear;
+}
+.form-switch span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 42px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+  transition: all 0.25s linear;
+}
+.form-switch span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 11px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+  transform: translate3d(2px, 2px, 0);
+  transition: all 0.2s ease-in-out;
+}
+.form-switch:active span::after {
+  width: 28px;
+  transform: translate3d(2px, 2px, 0);
+}
+.form-switch:active input:checked + span::after {
+  transform: translate3d(16px, 2px, 0);
+}
+.form-switch input {
+  display: none;
+}
+.form-switch input:checked + span {
+  background-color: #545454;
+}
+.form-switch input:checked + span::before {
+  transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
+.form-switch input:checked + span::after {
+  transform: translate3d(22px, 2px, 0);
+}
+
+.theme-switch__icon {
+  fill: currentColor;
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
+}
+.theme-switch__icon:hover {
+  fill: #ff6b08;
+}
+.form-switch input:checked ~ .theme-switch__icon {
+  fill: #ff6b08;
+}
+
+body.dark {
+  background-color: #545454;
+}
+
+body.dark .footer {
+  background-color: #443f3f;
+  color: #ffffff;
+}
+
+body.dark .footer-container {
+  color: #ffffff;
+}
+
+body.dark .person {
+  background-color: #7c7676;
+}
+body.dark .person-info__text {
+  color: #b4b1b1;
+}
+
+body.dark .person-social {
+  fill: #ffffff;
+}
+
+body.dark .team-modal,
+body.dark .modal-window {
+  background-color: #555252;
+}
+body.dark .description,
+body.dark .about-descr {
+  //   color: #b4b1b1;
+  color: rgba(140, 140, 140, 1);
+}
+body.dark .characteristic {
+  color: #ffffff;
+}
+body.dark .votes {
+  color: black;
+}
+body.dark .about {
+  text-shadow: 2px 2px 7px rgb(255 107 1 / 60%);
+}
+
+// body.dark .tui-pagination,
+// body.dark .tui-page-btn {
+//   color: #ffffff;
+// }
