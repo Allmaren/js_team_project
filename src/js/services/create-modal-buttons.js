@@ -9,23 +9,22 @@ import {
 } from './markup-modal-buttons';
 
 let MOVIE_ID = 0;
-let USER_ID = '';
 
 export async function createModalButtons(movieID) {
-  USER_ID = JSON.parse(localStorage.getItem('user-id'));
+  const userID = JSON.parse(localStorage.getItem('user-id'));
   MOVIE_ID = movieID;
 
-  const arrayWatchedMovies = await allMoviesWatched(USER_ID)
+  const arrayWatchedMovies = await allMoviesWatched(userID)
     .then(res => res)
     .catch(error => console.log(error));
   const allWatched = arrayWatchedMovies ? arrayWatchedMovies : [];
 
-  const arrayQueueMovies = await allMoviesQueue(USER_ID)
+  const arrayQueueMovies = await allMoviesQueue(userID)
     .then(res => res)
     .catch(error => console.log(error));
   const allQueue = arrayQueueMovies ? arrayQueueMovies : [];
 
-  onRenderRightModalButtons(USER_ID, movieID, allWatched, allQueue);
+  onRenderRightModalButtons(userID, movieID, allWatched, allQueue);
 
   const watchedBtn = document.querySelector('.add-to-watched-btn');
   const queueBtn = document.querySelector('.add-to-queue-btn');
@@ -35,10 +34,11 @@ export async function createModalButtons(movieID) {
 
 function onUpdateMovies(evt) {
   const nameButton = evt.srcElement.innerText.toLowerCase();
-  if (!USER_ID) {
-    refs.backdropMovieMovie.classList.toggle('is_hidden-movie');
+  const userID = JSON.parse(localStorage.getItem('user-id'));
+
+  if (!userID) {
     onToggleModal();
-  } else updateMovies(USER_ID, MOVIE_ID, nameButton.trim());
+  } else updateMovies(userID, MOVIE_ID, nameButton.trim());
 }
 
 function onRenderRightModalButtons(userId, movieID, allWatched, allQueue) {
