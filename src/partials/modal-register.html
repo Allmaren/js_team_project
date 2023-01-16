@@ -1,23 +1,4 @@
-<!-- Коли зматчимо з реальними кнопками - треба видалити -->
-<button type="button" class="open-modal-register" data-modal-open-register>
-  Open modal
-</button>
-
-<button type="button" class="open-modal-register" data-add-watched>
-  Add-watched
-</button>
-<button type="button" class="open-modal-register" data-remove-watched>
-  Remove-watched
-</button>
-
-<button type="button" class="open-modal-register" data-add-queue>
-  Add-queue
-</button>
-<button type="button" class="open-modal-register" data-remove-queue>
-  Remove-queue
-</button>
-
-<!-- Modal> -->
+<!-- Modal for registration> -->
 <div class="backdrop-register is-hidden" data-modal-register>
   <div class="register-order">
     <button class="button-close-register" data-modal-close-register>
@@ -33,10 +14,8 @@
         <label for="email" class="register-form__label">E-mail</label>
         <div class="register-form__wrapper">
           <input
-
             class="register-form__input"
             type="email"
-
             required
             data-email
           />
@@ -49,11 +28,9 @@
         <label for="password" class="register-form__label">Password</label>
         <div class="register-form__wrapper">
           <input
-
             class="register-form__input"
             type="password"
             minlength="6"
-
             required
             data-password
           />

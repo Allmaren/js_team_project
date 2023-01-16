@@ -1,12 +1,10 @@
-import { initTrailerListener } from './watched.js'
-import { createButtons } from './services/create-buttons';
+import { initTrailerListener } from './watched.js';
+import { createModalButtons } from './services/create-modal-buttons';
 
 export function renderModalMarkup(element, object) {
   element.insertAdjacentHTML('beforeend', createMovieItem(object));
   initTrailerListener(element, object.id);
-  const buttons = document.querySelector('.about-descr');
-  buttons.insertAdjacentHTML('beforeend', createButtons());
-
+  createModalButtons(object.id);
 }
 
 function createMovieItem({
@@ -74,6 +72,5 @@ function createMovieItem({
     <p class="about-descr">${overview}</p>
   </div>
 </div>
-
 `;
 }
