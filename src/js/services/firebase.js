@@ -8,6 +8,8 @@ import {
 } from './updateMovies';
 import { commonError } from './error';
 import { Notify } from 'notiflix';
+import { onToggleModal } from '../authentication';
+import { STORAGE_KEY } from '../authentication';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBSg4CGEIXkX93eS0B-tWQYlplv3PWQL0c',
@@ -46,12 +48,14 @@ export async function createUser({
           })
             .then(res => {
               Notify.success(
-                `Hooray! You have registered successfully! Now please log in and can add favorite movies and watch you library`,
+                `Hooray! You have registered successfully! Now please you can add favorite movies and watch you library`,
                 {
-                  timeout: 6000,
+                  timeout: 3000,
                   fontSize: '16px',
                 }
               );
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
+              onToggleModal();
               return res;
             })
             .catch(error => commonError(error));
@@ -76,7 +80,7 @@ export function logInUser({ userEmail, userPassword }) {
         return isUser;
       } else {
         Notify.failure(
-          'Sorry, your login or password is wrong. Try again or register',
+          'Sorry, your login or password is wrong or empty. Try again or register',
           {
             fontSize: '16px',
           }
