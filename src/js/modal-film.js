@@ -47,8 +47,10 @@ function onCloseModalMovieEscape(e) {
   }
 }
 
-function onCLoseBackdropMovie() {
-  toggleModal();
-  window.removeEventListener('keydown', onCloseModalMovieEscape);
-  refs.closeModal.removeEventListener('click', onCloseModalMovie);
+function onCLoseBackdropMovie(e) {
+  if (e.target === refs.backdropMovie) {
+    toggleModal();
+    window.removeEventListener('keydown', onCloseModalMovieEscape);
+    refs.closeModal.removeEventListener('click', onCloseModalMovie);
+  }
 }
