@@ -34,6 +34,18 @@ export default function spinner() {
   }, 500);
 }
 
+const spinnerBtn = document.querySelector('.spinner-btn-js');
+
+spinnerBtn.addEventListener('click', clickBtnHandler);
+console.log(spinnerBtn);
+
+function clickBtnHandler(event) {
+  setTimeout(() => {
+    event.target.classList.remove('spinner-btn-js');
+  }, 1500);
+  event.target.classList.add('spinner-btn-js');
+}
+
 // async function sendForm() {
 //   try {
 //     document.forms.user.querySelector('[type="submit"]').disabled = true;
