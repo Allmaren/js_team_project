@@ -28,36 +28,43 @@ export async function createUser({
   watchedMovies,
   queueMovies,
 }) {
-  await checkUser(userEmail)
-    .then(res => {
-      if (userEmail !== res.userEmail) {
-        set(ref(database, 'users/' + userEmail), {
-          userEmail,
-          userPassword,
-          watchedMovies,
-          queueMovies,
-        })
-          .then(res => {
-            Notify.success(
-              `Hooray! You have registered successfully! Now please log in and can add favorite movies and watch you library`,
-              {
-                timeout: 6000,
-                fontSize: '16px',
-              }
-            );
-            return res;
+  // const userEmail = userEmail.replaceAll('.', '_');
+  if (!userEmail || !userPassword) {
+    Notify.warning(`Oops! Login and password must be not empty`, {
+      timeout: 4000,
+      fontSize: '16px',
+    });
+  } else
+    await checkUser(userEmail)
+      .then(res => {
+        if (userEmail !== res.userEmail) {
+          set(ref(database, 'users/' + userEmail), {
+            userEmail,
+            userPassword,
+            watchedMovies,
+            queueMovies,
           })
-          .catch(error => commonError(error));
-      } else {
-        Notify.warning(
-          `Sorry, user "${userEmail}" already registered. Please log in`,
-          {
-            fontSize: '16px',
-          }
-        );
-      }
-    })
-    .catch(error => console.log(error.status));
+            .then(res => {
+              Notify.success(
+                `Hooray! You have registered successfully! Now please log in and can add favorite movies and watch you library`,
+                {
+                  timeout: 6000,
+                  fontSize: '16px',
+                }
+              );
+              return res;
+            })
+            .catch(error => commonError(error));
+        } else {
+          Notify.warning(
+            `Sorry, user "${userEmail}" already registered. Please log in`,
+            {
+              fontSize: '16px',
+            }
+          );
+        }
+      })
+      .catch(error => console.log(error.status));
 }
 
 export function logInUser({ userEmail, userPassword }) {

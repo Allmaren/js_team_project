@@ -8,15 +8,12 @@ export default function spinner() {
     document.body.classList.remove('loaded_hiding');
 
   }, 500);
-
-}
+};
 
 
 
 const spinnerBtn = document.querySelector('.spinner-btn-js');
-
 spinnerBtn.addEventListener('click', clickBtnHandler);
-console.log(spinnerBtn);
 
 function clickBtnHandler(event) {
   setTimeout(() => {
@@ -57,5 +54,3 @@ function clickBtnHandler(event) {
 //   e.preventDefault();
 //   sendForm();
 // });
-
-
