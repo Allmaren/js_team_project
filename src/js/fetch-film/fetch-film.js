@@ -1,5 +1,6 @@
 import API from '../fetch-film/fetch-data';
 import renderCard from '../render';
+import spinner from '../spinner';
 
 const searchForm = document.querySelector('.header__form');
 const gallery = document.querySelector('.search-film__by-name-js');
@@ -24,6 +25,7 @@ function searchHandler(event) {
       .then(data => data.results)
       .then(films => {
         if (films.length >= 1) {
+          // spinner();
           gallery.innerHTML = '';
           renderCard(films, gallery).catch(error => console.log(error));
         } else {

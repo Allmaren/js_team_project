@@ -6,7 +6,6 @@ function fetchData(searchQuery) {
   const url = `${BASE_URL}?${params}`;
 
   return fetch(url).then(response => response.json());
-
-  }
+}
 
 export default { fetchData };
