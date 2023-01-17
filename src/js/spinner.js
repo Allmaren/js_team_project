@@ -5,13 +5,10 @@ document.body.onload = function () {
       preloader.classList.add('done');
     }
   }, 500);
-
-}
+};
 
 const spinnerBtn = document.querySelector('.spinner-btn-js');
-
 spinnerBtn.addEventListener('click', clickBtnHandler);
-console.log(spinnerBtn);
 
 function clickBtnHandler(event) {
   setTimeout(() => {
@@ -52,4 +49,3 @@ function clickBtnHandler(event) {
 //   e.preventDefault();
 //   sendForm();
 // });
-
