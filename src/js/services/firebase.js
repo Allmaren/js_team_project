@@ -33,7 +33,6 @@ export async function createUser({
   // const userEmail = userEmail.replaceAll('.', '_');
   if (!userEmail || !userPassword) {
     Notify.warning(`Oops! Login and password must be not empty`, {
-      timeout: 4000,
       fontSize: '16px',
     });
   } else
@@ -50,7 +49,6 @@ export async function createUser({
               Notify.success(
                 `Hooray! You have registered successfully! Now please you can add favorite movies and watch you library`,
                 {
-                  timeout: 3000,
                   fontSize: '16px',
                 }
               );
