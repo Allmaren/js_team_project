@@ -110,15 +110,19 @@ body.dark .person-social {
 }
 
 body.dark .team-modal,
-body.dark .modal-window {
+body.dark .modal-window,
+body.dark .register-order {
   background-color: #555252;
+  box-shadow: 0 0 22px 2px rgb(255 107 1 / 60%);
 }
 body.dark .description,
 body.dark .about-descr {
   //   color: #b4b1b1;
   color: rgba(140, 140, 140, 1);
 }
-body.dark .characteristic {
+body.dark .characteristic,
+body.dark .register-form__title,
+body.dark .card-item__title {
   color: #ffffff;
 }
 body.dark .votes {
@@ -128,6 +132,9 @@ body.dark .about {
   text-shadow: 2px 2px 7px rgb(255 107 1 / 60%);
 }
 
+body.dark .register-form__input {
+  background-color: rgba(140, 140, 140, 1);
+}
 // body.dark .tui-pagination,
 // body.dark .tui-page-btn {
 //   color: #ffffff;
