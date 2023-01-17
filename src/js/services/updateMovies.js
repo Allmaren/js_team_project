@@ -1,5 +1,6 @@
 import { ref, update } from 'firebase/database';
 import { Notify } from 'notiflix';
+import { notificationUpdateButtons } from './notification-update-buttons';
 
 export const onAddWatchedMovies = (
   database,
@@ -11,12 +12,9 @@ export const onAddWatchedMovies = (
     allWatched.push(movieId);
     const updates = {};
     updates['/users/' + userEmail + '/watchedMovies/'] = allWatched;
-    Notify.success(
-      'COMPLITED! This movie was added in your watched collection',
-      {
-        fontSize: '16px',
-      }
-    );
+
+    notificationUpdateButtons('addWatched');
+
     return update(ref(database), updates);
   } else {
     Notify.warning('Sorry, this movie is already in your watched collection', {
@@ -35,12 +33,9 @@ export const onRemoveWatchedMovies = (
     allWatched.splice(allWatched.indexOf(movieId), 1);
     const updates = {};
     updates['/users/' + userEmail + '/watchedMovies/'] = allWatched;
-    Notify.success(
-      'COMPLITED! This movie was removed from your watched collection',
-      {
-        fontSize: '16px',
-      }
-    );
+
+    notificationUpdateButtons('removeWatched');
+
     return update(ref(database), updates);
   } else {
     Notify.warning('Sorry, this movie is not in your watched collection', {
@@ -54,12 +49,9 @@ export const onAddQueueMovies = (database, userEmail, movieId, allQueue) => {
     allQueue.push(movieId);
     const updates = {};
     updates['/users/' + userEmail + '/queueMovies/'] = allQueue;
-    Notify.success(
-      'COMPLITED! This movie was added in your queue for watching',
-      {
-        fontSize: '16px',
-      }
-    );
+
+    notificationUpdateButtons('addQueue');
+
     return update(ref(database), updates);
   } else {
     Notify.warning('Sorry, this movie is already in your queue for watching', {
@@ -73,9 +65,9 @@ export const onRemoveQueueMovies = (database, userEmail, movieId, allQueue) => {
     allQueue.splice(allQueue.indexOf(movieId), 1);
     const updates = {};
     updates['/users/' + userEmail + '/queueMovies/'] = allQueue;
-    Notify.success('COMPLITED! This movie was removed from your queue', {
-      fontSize: '16px',
-    });
+
+    notificationUpdateButtons('removeQueue');
+
     return update(ref(database), updates);
   } else {
     Notify.warning('Sorry, this movie is not in your queue for watching', {
