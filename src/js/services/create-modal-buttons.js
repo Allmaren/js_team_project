@@ -16,12 +16,12 @@ export async function createModalButtons(movieID) {
 
   const arrayWatchedMovies = await allMoviesWatched(userID)
     .then(res => res)
-    .catch(error => console.log(error));
+    .catch(() => []);
   const allWatched = arrayWatchedMovies ? arrayWatchedMovies : [];
 
   const arrayQueueMovies = await allMoviesQueue(userID)
     .then(res => res)
-    .catch(error => console.log(error));
+    .catch(() => []);
   const allQueue = arrayQueueMovies ? arrayQueueMovies : [];
 
   onRenderRightModalButtons(userID, movieID, allWatched, allQueue);
