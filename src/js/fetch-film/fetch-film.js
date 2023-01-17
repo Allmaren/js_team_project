@@ -12,7 +12,6 @@ const headerSearchContainer = document.querySelector('.header__search-cont');
 const searchQuery = document.querySelector('.search-film__input');
 const warningText = document.querySelector('.header__warning-text-js');
 
-
 const container = document.getElementById('pagination');
 const paginatorOptions = {
   // totalItems: 20,
@@ -30,7 +29,6 @@ function searchHandler(event) {
   if (inputQuery === '') {
     warningText.classList.remove('is-hidden-warn');
   } else {
-
     API.fetchData(searchQuery)
       .then(data => data.results)
       .then(films => {
@@ -40,45 +38,45 @@ function searchHandler(event) {
         } else {
           warningText.classList.remove('is-hidden-warn');
 
-  //  fetchData(searchQuery)
- //   .then(() => {
- //     new Pagination(container, paginatorOptions).on(
- //       'afterMove',
-  //      function (eventData) {
-  //        console.log('The current page is ' + eventData.page);
-   //       fetchData(searchQuery, eventData.page)
-  //        window.scrollTo({ top: 0, behavior: 'smooth' });
-
+          //  fetchData(searchQuery)
+          //   .then(() => {
+          //     new Pagination(container, paginatorOptions).on(
+          //       'afterMove',
+          //      function (eventData) {
+          //        console.log('The current page is ' + eventData.page);
+          //       fetchData(searchQuery, eventData.page)
+          //        window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-      );
-    }) 
+      });
   }
-};
+}
 
 function inputHandler(event) {
   // const deletingWarning = document.querySelector('.header__warning-text-js');
   warningText.classList.add('is-hidden-warn');
 }
 
-
-function fetchData(searchQuery,page = 1) {
+function fetchData(searchQuery, page = 1) {
   const params = `api_key=${API_KEY}&query='${searchQuery.value}'&language=en-US&page=${page}&include_adult=false`;
   const url = `${BASE_URL}?${params}`;
 
-  return fetch(url).then(response => response.json()).then(data => {
-    paginatorOptions.totalItems = data.total_results;
-    return data.results;
-  }).then(films => {
-    if (films.length >= 1) {
-      renderCard(films, gallery)
-      warningText.classList.add('is-hidden-warn');
-    } else {
-      warningText.classList.remove('is-hidden-warn');
-      // gallery.innerHTML = '';
-    }
-  }).catch(error => console.log(error));
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      paginatorOptions.totalItems = data.total_results;
+      return data.results;
+    })
+    .then(films => {
+      if (films.length >= 1) {
+        renderCard(films, gallery);
+        warningText.classList.add('is-hidden-warn');
+      } else {
+        warningText.classList.remove('is-hidden-warn');
+        // gallery.innerHTML = '';
+      }
+    })
+    .catch(error => console.log(error));
 }
-  
 
 // import API from '../fetch-film/fetch-data';
 // import renderCard from '../render';
