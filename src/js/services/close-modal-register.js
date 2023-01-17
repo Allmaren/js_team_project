@@ -7,9 +7,9 @@ export function onCloseModalByEscape(evt) {
   }
 }
 
-export function onCloseModalByClickBackdrop(evt) {
-  if (evt.target.classList.value === 'backdrop-register') {
-    onToggleModal();
-    window.removeEventListener('keydown', onCloseModalByEscape);
-  }
-}
+// export function onCloseModalByClickBackdrop(evt) {
+//   if (evt.target.classList.value === 'backdrop-register') {
+//     onToggleModal();
+//     window.removeEventListener('keydown', onCloseModalByEscape);
+//   }
+// }
