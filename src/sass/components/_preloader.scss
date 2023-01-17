@@ -6,7 +6,7 @@
   bottom: 0;
   overflow: hidden;
   /* фоновый цвет */
-  background: #e0e0e0;
+  background: #fff;
   z-index: 1001;
   opacity: 0.5;
 }
@@ -17,15 +17,18 @@
   left: 50%;
   width: 70px;
   height: 70px;
-  margin-top: -35px;
-  margin-left: -35px;
+  transform: translate(-50%, -50%);
   text-align: center;
-  animation: preloader-rotate 2s infinite linear;
+  animation: spin 2s infinite linear;
+  visibility: visible;
 }
 
-@keyframes preloader-rotate {
-  100% {
-    transform: rotate(360deg);
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
@@ -34,8 +37,9 @@
   opacity: 0.5;
 }
 
-.loaded .preloader {
-  display: none;
+.done {
+  opacity: 0;
+  visibility: hidden;
 }
 
 @keyframes spinner-border {
