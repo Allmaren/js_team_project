@@ -63,29 +63,3 @@
 .submit-spinner_hide {
   display: none;
 }
-
-.spinner-btn-js:focus {
-  color: transparent;
-}
-.spinner-btn-js:focus::after {
-  position: absolute;
-  content: ' ';
-  border: 1px solid blue;
-  width: 15px;
-  height: 15px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border-top-color: yellow;
-  animation: spin 2s infinite linear;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
