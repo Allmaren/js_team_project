@@ -1,7 +1,4 @@
-import {
-  onCloseModalByEscape,
-  onCloseModalByClickBackdrop,
-} from './services/close-modal-register';
+import { onCloseModalByEscape } from './services/close-modal-register';
 import { createUser, logInUser, updateMovies } from './services/firebase';
 import { Notify } from 'notiflix';
 
@@ -22,7 +19,6 @@ const refs = {
 refs.closeModalBtn.addEventListener('click', onToggleModal);
 
 export function onToggleModal() {
-  refs.modalRegister.addEventListener('click', onCloseModalByClickBackdrop);
   window.addEventListener('keydown', onCloseModalByEscape);
   document.body.classList.toggle('no-scroll');
   refs.modalRegister.classList.toggle('is-hidden');
