@@ -1,4 +1,3 @@
-// import API from '../fetch-film/fetch-data';
 import renderCard from '../render';
 
 import Pagination from 'tui-pagination';
@@ -8,7 +7,7 @@ const API_KEY = '57c452bac8b733cbb049921c3a15e368';
 
 const searchForm = document.querySelector('.header__form');
 const gallery = document.querySelector('.search-film__by-name-js');
-const headerSearchContainer = document.querySelector('.header__search-cont');
+// const headerSearchContainer = document.querySelector('.header__search-cont');
 const searchQuery = document.querySelector('.search-film__input');
 const warningText = document.querySelector('.header__warning-text-js');
 
@@ -29,25 +28,18 @@ function searchHandler(event) {
   if (inputQuery === '') {
     warningText.classList.remove('is-hidden-warn');
   } else {
-    API.fetchData(searchQuery)
-      .then(data => data.results)
-      .then(films => {
-        if (films.length >= 1) {
-          gallery.innerHTML = '';
-          renderCard(films, gallery).catch(error => console.log(error));
-        } else {
-          warningText.classList.remove('is-hidden-warn');
 
-          //  fetchData(searchQuery)
-          //   .then(() => {
-          //     new Pagination(container, paginatorOptions).on(
-          //       'afterMove',
-          //      function (eventData) {
-          //        console.log('The current page is ' + eventData.page);
-          //       fetchData(searchQuery, eventData.page)
-          //        window.scrollTo({ top: 0, behavior: 'smooth' });
+    fetchData(searchQuery).then(() => {
+      new Pagination(container, paginatorOptions).on(
+        'afterMove',
+        function (eventData) {
+          console.log('The current page is ' + eventData.page);
+          fetchData(searchQuery, eventData.page);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-      });
+      );
+    });
+
   }
 }
 
@@ -77,6 +69,7 @@ function fetchData(searchQuery, page = 1) {
     })
     .catch(error => console.log(error));
 }
+
 
 // import API from '../fetch-film/fetch-data';
 // import renderCard from '../render';
@@ -116,3 +109,4 @@ function fetchData(searchQuery, page = 1) {
 //   const deletingWarning = document.querySelector('.header__warning-text-js');
 //   deletingWarning.classList.add('is-hidden-warn');
 // }
+

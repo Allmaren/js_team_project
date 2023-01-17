@@ -1,11 +1,16 @@
-document.body.onload = function () {
-  setTimeout(function () {
-    const preloader = document.querySelector('.preloader');
-    if (!preloader.classList.contains('done')) {
-      preloader.classList.add('done');
-    }
+
+window.onload = spinner();
+
+export default function spinner() {
+  document.body.classList.add('loaded_hiding');
+  window.setTimeout(function () {
+    document.body.classList.add('loaded');
+    document.body.classList.remove('loaded_hiding');
+
   }, 500);
 };
+
+
 
 const spinnerBtn = document.querySelector('.spinner-btn-js');
 spinnerBtn.addEventListener('click', clickBtnHandler);
