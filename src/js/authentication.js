@@ -1,6 +1,7 @@
 import { onCloseModalByEscape } from './services/close-modal-register';
 import { createUser, logInUser } from './services/firebase';
 import { Notify } from 'notiflix';
+import { withoutDot } from './services/notification-update-buttons';
 
 export const STORAGE_KEY = 'user-id';
 
@@ -40,7 +41,11 @@ async function onCreateUser(evt) {
     queueMovies: [0],
   };
 
-  await createUser(userData);
+  if (!userData.userEmail.includes('.')) {
+    await createUser(userData);
+  } else {
+    withoutDot();
+  }
 
   refs.formEl.reset();
 }
