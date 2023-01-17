@@ -2,7 +2,7 @@ import { onCloseModalByEscape } from './services/close-modal-register';
 import { createUser, logInUser } from './services/firebase';
 import { Notify } from 'notiflix';
 
-const STORAGE_KEY = 'user-id';
+export const STORAGE_KEY = 'user-id';
 
 const refs = {
   modalRegister: document.querySelector('[data-modal-register]'),
@@ -41,13 +41,7 @@ async function onCreateUser(evt) {
   };
 
   await createUser(userData);
-  const { userEmail, userPassword } = userData;
 
-  if (userEmail && userPassword) {
-    const { userEmail } = userData;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
-    onToggleModal();
-  }
   refs.formEl.reset();
 }
 
