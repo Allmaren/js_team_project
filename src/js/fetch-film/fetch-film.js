@@ -1,5 +1,6 @@
 // import API from '../fetch-film/fetch-data';
 import renderCard from '../render';
+
 import Pagination from 'tui-pagination';
 
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
@@ -29,14 +30,25 @@ function searchHandler(event) {
   if (inputQuery === '') {
     warningText.classList.remove('is-hidden-warn');
   } else {
-    fetchData(searchQuery)
-    .then(() => {
-      new Pagination(container, paginatorOptions).on(
-        'afterMove',
-        function (eventData) {
-          console.log('The current page is ' + eventData.page);
-          fetchData(searchQuery, eventData.page)
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    API.fetchData(searchQuery)
+      .then(data => data.results)
+      .then(films => {
+        if (films.length >= 1) {
+          gallery.innerHTML = '';
+          renderCard(films, gallery).catch(error => console.log(error));
+        } else {
+          warningText.classList.remove('is-hidden-warn');
+
+  //  fetchData(searchQuery)
+ //   .then(() => {
+ //     new Pagination(container, paginatorOptions).on(
+ //       'afterMove',
+  //      function (eventData) {
+  //        console.log('The current page is ' + eventData.page);
+   //       fetchData(searchQuery, eventData.page)
+  //        window.scrollTo({ top: 0, behavior: 'smooth' });
+
         }
       );
     }) 
