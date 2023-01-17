@@ -1,5 +1,5 @@
 import { onCloseModalByEscape } from './services/close-modal-register';
-import { createUser, logInUser, updateMovies } from './services/firebase';
+import { createUser, logInUser } from './services/firebase';
 import { Notify } from 'notiflix';
 
 const STORAGE_KEY = 'user-id';
@@ -41,11 +41,14 @@ async function onCreateUser(evt) {
   };
 
   await createUser(userData);
-  const { userEmail } = userData;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
+  const { userEmail, userPassword } = userData;
 
+  if (userEmail && userPassword) {
+    const { userEmail } = userData;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
+    onToggleModal();
+  }
   refs.formEl.reset();
-  onToggleModal();
 }
 
 // Log In user on Firebase - using for button "LIBRARY"
