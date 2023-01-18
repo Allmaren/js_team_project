@@ -278,6 +278,7 @@ table tr {
   border-radius: 5px;
   border: 1px solid #000000;
   background-color: transparent;
+  cursor: pointer;
 
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
     color 300ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -319,6 +320,7 @@ table tr {
 
   border-radius: 5px;
   border: 1px solid #000000;
+  cursor: pointer;
 
   background-color: transparent;
 
@@ -362,13 +364,11 @@ table tr {
   width: 68px;
   height: 68px;
   color: white;
-  
-  
+
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    box-shadow 250ms  cubic-bezier(0.4, 0, 0.2, 1);
-    
   background-color: rgba(0, 0, 0, 0);
   border: 3px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
@@ -382,8 +382,8 @@ table tr {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fetch-trailer:focus,
