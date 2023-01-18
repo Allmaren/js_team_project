@@ -43,6 +43,8 @@ async function onCreateUser(evt) {
 
   if (!userData.userEmail.includes('.')) {
     await createUser(userData);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(userData.userEmail));
+    window.location.href = 'index.html';
   } else {
     withoutDot();
   }
@@ -64,12 +66,13 @@ async function onLogIn(evt) {
     .then(isUser)
     .catch(error => {
       refs.formEl.reset();
-      console.log(error);
+      console.log(error.status);
     });
 
   if (userMovies) {
     onToggleModal();
     refs.formEl.reset();
+    window.location.href = 'library.html';
     return userMovies;
   }
 }

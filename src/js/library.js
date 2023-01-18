@@ -1,48 +1,57 @@
 import axios from 'axios';
-// import { onToggleModal } from './authentication';
+import { onToggleModal } from './authentication';
 import { allMoviesWatched, allMoviesQueue } from './services/firebase';
-
-const libraryEl = document.querySelector('.nav__link-my-library');
 
 const libraryUl = document.querySelector('.my-library-list');
 const watchedEL = document.querySelector('button.btn-watched');
-const quequeEl = document.querySelector('button.btn-queque');
+const queueEl = document.querySelector('button.btn-queue');
+const libraryWrapper = document.querySelector('.nav-library');
+const currentWatchedBtn = document.querySelector('.btn-watched');
+const currentQueueBtn = document.querySelector('.btn-queue');
 
-// // libraryEl.addEventListener('click', onClickLibrary);
+watchedEL.addEventListener('click', getWatchedFilms);
+queueEl.addEventListener('click', getQueueFilms);
 
-// // function onClickLibrary(evt) {
-// //   evt.preventDefault();
-// //   let userId = localStorage.getItem('user-id');
-// //   if (!userId) {
-// //     onToggleModal();
-// //   } else {
-// //     location.href = 'library.html';
-// //     getMovies(userId);
-// //   }
-// // }
+const userId = JSON.parse(localStorage.getItem('user-id'));
 
-let userId = localStorage.getItem('user-id');
-
-// watchedEL.addEventListener('click', getWatchedFilms);
-// quequeEl.addEventListener('click', getQuequeFilms);
-
-getMovies(allMoviesWatched, userId);
-
-function getWatchedFilms(fetchFilms) {
+if (!userId) {
+  let notificationLibrary = document.createElement('p');
+  notificationLibrary.className = 'notification-update-movie';
+  notificationLibrary.innerHTML =
+    'To create your collections of movies you have to log in. Please touch buttons "WATCHED" or "QUEUE" for log in or registration';
+  libraryWrapper.append(notificationLibrary);
+  setTimeout(() => notificationLibrary.remove(), 10000);
+} else {
+  currentWatchedBtn.classList.add('btn-library-current');
   getMovies(allMoviesWatched, userId);
 }
 
-function getQuequeFilms(fetchFilms) {
-  getMovies(allMoviesQueue, userId);
+function getWatchedFilms() {
+  if (!userId) {
+    onToggleModal();
+  } else {
+    currentWatchedBtn.classList.add('btn-library-current');
+    currentQueueBtn.classList.remove('btn-library-current');
+    getMovies(allMoviesWatched, userId);
+  }
+}
+
+function getQueueFilms() {
+  if (!userId) {
+    onToggleModal();
+  } else {
+    currentWatchedBtn.classList.remove('btn-library-current');
+    currentQueueBtn.classList.add('btn-library-current');
+    getMovies(allMoviesQueue, userId);
+  }
 }
 
 async function getMovies(fetchFilms, userId) {
-  const getFilms = await fetchFilms(JSON.parse(userId))
+  const getFilms = await fetchFilms(userId)
     .then(res => res)
     .catch(error => console.log(error));
 
   const arrayFilms = getFilms.slice(1);
-  console.log('arrayFilms', arrayFilms);
 
   libraryUl.innerHTML = '';
   arrayFilms.map(async el => {
