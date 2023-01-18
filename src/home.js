@@ -1,11 +1,7 @@
 import './js/spinner';
 import './js/fetch-film/fetch-film';
-import './js/fetch-library';
-import './js/fetch-query';
 import './js/fetch-trend';
 // import './js/library';
-
-import './js/add-to-library';
 
 import './js/pagination';
 import './js/queue';
