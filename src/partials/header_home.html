@@ -15,13 +15,28 @@
           <a href="./index.html" class="nav__link-home current">HOME</a>
           <a href="./library.html" class="nav__link-my-library">MY LIBRARY</a>
         </li>
+        <li>
+          <label class="form-switch">
+            <input type="checkbox" id="theme-switch" />
+            <span></span>
+            <svg class="theme-switch__icon" aria-label="moon">
+              <use href="./images/icon.svg#icon-moon"></use>
+            </svg>
+          </label>
+        </li>
       </ul>
     </nav>
     <div class="header__search-cont">
       <form class="header__form">
         <div class="input-container">
-          <input type="text" name="searchFilm" id="search" class="search-film__input" autocomplete="off"
-            placeholder="Movie search" />
+          <input
+            type="text"
+            name="searchFilm"
+            id="search"
+            class="search-film__input"
+            autocomplete="off"
+            placeholder="Movie search"
+          />
 
           <button type="submit" class="header-form__btn">
             <svg class="icon-search" width="12px" height="12px">
@@ -35,12 +50,5 @@
         searching please.
       </p>
     </div>
-    <label class="form-switch">
-      <input type="checkbox" id="theme-switch" />
-      <span></span>
-      <svg class="theme-switch__icon" aria-label="moon">
-        <use href="./images/icon.svg#icon-moon"></use>
-      </svg>
-    </label>
   </div>
 </header>

@@ -99,7 +99,15 @@
 .nav__list-library {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  margin-right: auto;
+
+  justify-content: space-around;
+}
+.nav__list-item {
+  margin-left: auto;
+
+  margin-right: 30px;
 }
 
 .nav__link-home-library,
