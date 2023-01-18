@@ -13,5 +13,6 @@ import './js/authentication';
 import './js/render';
 import './js/loader';
 import './js/dark-mode';
-import './js/button_up';
+// import './js/button_up';
 import './js/spinner';
+import './js/scroll-up';
