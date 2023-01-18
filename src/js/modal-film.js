@@ -1,5 +1,6 @@
 import { renderModalMarkup } from './render-modal-movie';
 import { refs } from './refs';
+import { reload } from './services/reload-library';
 import axios from 'axios';
 import 'animate.css';
 
@@ -37,11 +38,13 @@ function onCloseModalMovie() {
     toggleModal();
     window.removeEventListener('keydown', onCloseModalMovieEscape);
     refs.backdropMovie.removeEventListener('click', onCLoseBackdropMovie);
+    reload();
   }
 }
 
 function onCloseModalMovieEscape(e) {
   if (e.key === 'Escape') {
+    reload();
     toggleModal();
     window.removeEventListener('keydown', onCloseModalMovieEscape);
   }
@@ -52,5 +55,6 @@ function onCLoseBackdropMovie(e) {
     toggleModal();
     window.removeEventListener('keydown', onCloseModalMovieEscape);
     refs.closeModal.removeEventListener('click', onCloseModalMovie);
+    reload();
   }
 }
