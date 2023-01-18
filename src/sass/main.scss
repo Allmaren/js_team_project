@@ -1,14 +1,13 @@
 @import './utils/mixins';
-@import './components/basic';
-@import './components/common';
-@import './components/container';
+@import './basic/basic';
+@import './basic/common';
+@import './basic//container';
 
 @import './components/header';
 @import './components/home';
 @import './components/library';
 @import './components/footer';
 @import './components/trending';
-// @import './components/button_up';
 
 @import './components/modal_movie';
 @import './components/modal-register';
