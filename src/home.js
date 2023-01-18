@@ -1,11 +1,11 @@
-import './js/spinner';
-import './js/fetch-film/fetch-film';
+import './js/component/spinner';
+import './js/fetch-film';
 import './js/fetch-trend';
 import './js/pagination';
 import './js/watched';
 import './js/modal-film';
 import './js/authentication';
 import './js/modal-team';
-import './js/render';
-import './js/dark-mode';
-import './js/scroll-up';
+import './js/component/render';
+import './js/component/dark-mode';
+import './js/component/scroll-up';

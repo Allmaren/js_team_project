@@ -1,5 +1,5 @@
 import { renderModalMarkup } from './render-modal-movie';
-import { refs } from './refs';
+import { refs } from './component/refs';
 import { reload } from './services/reload-library';
 import axios from 'axios';
 import 'animate.css';

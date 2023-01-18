@@ -39,7 +39,7 @@ export default async function renderCard(movies, ulSelector) {
       }
     )
     .join('');
-  // ulSelector.insertAdjacentHTML('beforeend', cardElem);
+
   ulSelector.innerHTML = cardElem;
 }
 const genreList = {};

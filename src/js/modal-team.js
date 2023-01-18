@@ -1,4 +1,4 @@
-import { playSound } from './audio-function';
+import { playSound } from './component/audio-function';
 
 const refs = {
   aboutDev: document.querySelector('#open-team-modal'),

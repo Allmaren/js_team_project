@@ -1,4 +1,4 @@
-import renderCard from '../render';
+import renderCard from './component/render';
 
 import Pagination from 'tui-pagination';
 
@@ -7,13 +7,12 @@ const API_KEY = '57c452bac8b733cbb049921c3a15e368';
 
 const searchForm = document.querySelector('.header__form');
 const gallery = document.querySelector('.search-film__by-name-js');
-// const headerSearchContainer = document.querySelector('.header__search-cont');
+
 const searchQuery = document.querySelector('.search-film__input');
 const warningText = document.querySelector('.header__warning-text-js');
 
 const container = document.getElementById('pagination');
 const paginatorOptions = {
-  // totalItems: 20,
   itemsPerPage: 20,
   visiblePages: 5,
 };
@@ -42,7 +41,6 @@ function searchHandler(event) {
 }
 
 function inputHandler(event) {
-  // const deletingWarning = document.querySelector('.header__warning-text-js');
   warningText.classList.add('is-hidden-warn');
 }
 
@@ -62,7 +60,6 @@ function fetchData(searchQuery, page = 1) {
         warningText.classList.add('is-hidden-warn');
       } else {
         warningText.classList.remove('is-hidden-warn');
-        // gallery.innerHTML = '';
       }
     })
     .catch(error => console.log(error));

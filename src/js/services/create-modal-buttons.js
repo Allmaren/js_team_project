@@ -1,4 +1,4 @@
-import { refs } from '../refs';
+import { refs } from '../component/refs';
 import { onToggleModal } from '../authentication';
 import { allMoviesWatched, allMoviesQueue, updateMovies } from './firebase';
 import {
