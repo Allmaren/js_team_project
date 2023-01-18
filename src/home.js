@@ -1,3 +1,4 @@
+import './js/spinner';
 import './js/fetch-film/fetch-film';
 import './js/fetch-trend';
 // import './js/library';
@@ -14,5 +15,5 @@ import './js/render';
 import './js/loader';
 import './js/dark-mode';
 // import './js/button_up';
-import './js/spinner';
+
 import './js/scroll-up';
