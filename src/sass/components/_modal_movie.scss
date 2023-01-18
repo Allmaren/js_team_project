@@ -290,6 +290,8 @@ table tr {
     border: none;
     color: white;
 
+    cursor: pointer;
+
     transform: scale(1.1);
   }
 
@@ -333,6 +335,7 @@ table tr {
     border-radius: 5px;
     border: none;
     color: white;
+    cursor: pointer;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -362,13 +365,11 @@ table tr {
   width: 68px;
   height: 68px;
   color: white;
-  
-  
+
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    box-shadow 250ms  cubic-bezier(0.4, 0, 0.2, 1);
-    
   background-color: rgba(0, 0, 0, 0);
   border: 3px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
