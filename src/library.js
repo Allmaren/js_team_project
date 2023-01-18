@@ -7,6 +7,7 @@ import './js/pagination';
 import './js/queue';
 import './js/watched';
 
+import './js/modal-film';
 import './js/modal-team';
 import './js/authentication';
 
