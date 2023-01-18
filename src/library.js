@@ -1,16 +1,19 @@
 import './js/fetch-library';
 import './js/fetch-query';
 
-import './js/add-to-library';
+import './js/library';
 
 import './js/pagination';
 import './js/queue';
 import './js/watched';
 
+import './js/modal-film';
 import './js/modal-team';
+import './js/authentication';
 
 import './js/render';
 import './js/loader';
 import './js/dark-mode';
-import './js/button_up';
+// import './js/button_up';
 import './js/spinner';
+import './js/scroll-up';

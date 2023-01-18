@@ -47,10 +47,28 @@
   font-size: 30px;
   line-height: 35px;
   color: rgba(255, 255, 255, 1);
+
+  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: #ff6b01;
+    transform: scale(1.1);
+  }
 }
 
 .icon-filmoteka {
   height: 24px;
+  stroke: #fff;
+
+  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    stroke: #ff6b01;
+    transform: scale(1.2);
+  }
 }
 
 .nav {
@@ -61,7 +79,15 @@
 .nav__list {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  margin-right: auto;
+
+  justify-content: space-around;
+}
+.nav__list-item {
+  margin-left: auto;
+
+  margin-right: 30px;
 }
 
 .nav__link-home,
@@ -76,6 +102,13 @@
   text-decoration: none;
   &:last-child {
     margin-left: 39px;
+  }
+
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: #ff6b01;
   }
 }
 
@@ -112,6 +145,10 @@ input:-webkit-autofill {
   @media screen and(max-width:767px) {
     width: 280px;
   }
+
+  transition: border-bottom 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+    width 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &::placeholder {
     color: #fff;
 
@@ -123,6 +160,8 @@ input:-webkit-autofill {
   &:hover,
   &:focus {
     outline: none;
+    width: 400px;
+    border-bottom: 0.5px solid #ff6b01;
   }
 }
 
@@ -149,6 +188,18 @@ input:-webkit-autofill {
   height: 12px;
   position: relative;
   left: -12px;
+  cursor: pointer;
+
+  stroke: rgba(255, 255, 255, 1);
+
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    scale 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    stroke: #ff6b01;
+    transform: scale(1.8);
+  }
 }
 
 li {

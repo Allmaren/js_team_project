@@ -126,6 +126,7 @@
   }
 
   &__input {
+    font-size: 14px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
     width: 100%;
@@ -205,9 +206,10 @@
   }
 }
 
-.notification-update-movie {
+.notification-update-movie,
+.notification-about-dot {
   margin-top: 15px;
-  color: green;
+  color: var(--text-accent);
   font-size: 14px;
   text-align: center;
 }

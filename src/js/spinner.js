@@ -1,3 +1,4 @@
+
 document.body.onload = function () {
   setTimeout(function () {
     const preloader = document.querySelector('.preloader');
@@ -6,3 +7,5 @@ document.body.onload = function () {
     }
   }, 1000);
 };
+
+

@@ -1,8 +1,9 @@
 import { onCloseModalByEscape } from './services/close-modal-register';
-import { createUser, logInUser, updateMovies } from './services/firebase';
+import { createUser, logInUser } from './services/firebase';
 import { Notify } from 'notiflix';
+import { withoutDot } from './services/notification-update-buttons';
 
-const STORAGE_KEY = 'user-id';
+export const STORAGE_KEY = 'user-id';
 
 const refs = {
   modalRegister: document.querySelector('[data-modal-register]'),
@@ -40,12 +41,13 @@ async function onCreateUser(evt) {
     queueMovies: [0],
   };
 
-  await createUser(userData);
-  const { userEmail } = userData;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
+  if (!userData.userEmail.includes('.')) {
+    await createUser(userData);
+  } else {
+    withoutDot();
+  }
 
   refs.formEl.reset();
-  onToggleModal();
 }
 
 // Log In user on Firebase - using for button "LIBRARY"
@@ -62,7 +64,7 @@ async function onLogIn(evt) {
     .then(isUser)
     .catch(error => {
       refs.formEl.reset();
-      console.log(error);
+      console.log(error.status);
     });
 
   if (userMovies) {

@@ -8,6 +8,8 @@ import {
 } from './updateMovies';
 import { commonError } from './error';
 import { Notify } from 'notiflix';
+import { onToggleModal } from '../authentication';
+import { STORAGE_KEY } from '../authentication';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBSg4CGEIXkX93eS0B-tWQYlplv3PWQL0c',
@@ -28,36 +30,43 @@ export async function createUser({
   watchedMovies,
   queueMovies,
 }) {
-  await checkUser(userEmail)
-    .then(res => {
-      if (userEmail !== res.userEmail) {
-        set(ref(database, 'users/' + userEmail), {
-          userEmail,
-          userPassword,
-          watchedMovies,
-          queueMovies,
-        })
-          .then(res => {
-            Notify.success(
-              `Hooray! You have registered successfully! Now please log in and can add favorite movies and watch you library`,
-              {
-                timeout: 6000,
-                fontSize: '16px',
-              }
-            );
-            return res;
+  // const userEmail = userEmail.replaceAll('.', '_');
+  if (!userEmail || !userPassword) {
+    Notify.warning(`Oops! Login and password must be not empty`, {
+      fontSize: '16px',
+    });
+  } else
+    await checkUser(userEmail)
+      .then(res => {
+        if (userEmail !== res.userEmail) {
+          set(ref(database, 'users/' + userEmail), {
+            userEmail,
+            userPassword,
+            watchedMovies,
+            queueMovies,
           })
-          .catch(error => commonError(error));
-      } else {
-        Notify.warning(
-          `Sorry, user "${userEmail}" already registered. Please log in`,
-          {
-            fontSize: '16px',
-          }
-        );
-      }
-    })
-    .catch(error => console.log(error.status));
+            .then(res => {
+              Notify.success(
+                `Hooray! You have registered successfully! Now please you can add favorite movies and watch you library`,
+                {
+                  fontSize: '16px',
+                }
+              );
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
+              onToggleModal();
+              return res;
+            })
+            .catch(error => commonError(error));
+        } else {
+          Notify.warning(
+            `Sorry, user "${userEmail}" already registered. Please log in`,
+            {
+              fontSize: '16px',
+            }
+          );
+        }
+      })
+      .catch(error => console.log(error.status));
 }
 
 export function logInUser({ userEmail, userPassword }) {
@@ -69,7 +78,7 @@ export function logInUser({ userEmail, userPassword }) {
         return isUser;
       } else {
         Notify.failure(
-          'Sorry, your login or password is wrong. Try again or register',
+          'Sorry, your login or password is wrong or empty. Try again or register',
           {
             fontSize: '16px',
           }

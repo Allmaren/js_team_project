@@ -2,7 +2,7 @@ import './js/fetch-film/fetch-film';
 import './js/fetch-library';
 import './js/fetch-query';
 import './js/fetch-trend';
-import './js/library';
+// import './js/library';
 
 import './js/add-to-library';
 
@@ -17,6 +17,7 @@ import './js/modal-team';
 import './js/render';
 import './js/loader';
 import './js/dark-mode';
-import './js/button_up';
+// import './js/button_up';
 import './js/spinner';
+import './js/scroll-up';
 
