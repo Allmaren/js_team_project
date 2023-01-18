@@ -1,13 +1,14 @@
 import './js/fetch-library';
 import './js/fetch-query';
 
-import './js/add-to-library';
+import './js/library';
 
 import './js/pagination';
 import './js/queue';
 import './js/watched';
 
 import './js/modal-team';
+import './js/authentication';
 
 import './js/render';
 import './js/loader';

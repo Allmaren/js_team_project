@@ -81,8 +81,14 @@
   align-items: center;
   justify-content: space-between;
 
-  //
-  perspective: 600px;
+  margin-right: auto;
+
+  justify-content: space-around;
+}
+.nav__list-item {
+  margin-left: auto;
+
+  margin-right: 30px;
 }
 
 .nav__link-home,

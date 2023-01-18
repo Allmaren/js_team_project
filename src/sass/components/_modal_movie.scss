@@ -291,6 +291,8 @@ table tr {
     border: none;
     color: white;
 
+    cursor: pointer;
+
     transform: scale(1.1);
   }
 
@@ -335,6 +337,7 @@ table tr {
     border-radius: 5px;
     border: none;
     color: white;
+    cursor: pointer;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {

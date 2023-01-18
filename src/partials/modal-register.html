@@ -11,12 +11,13 @@
         >To use advanced functionality, please register</strong
       >
       <div class="register-form__thumb">
-        <label for="text" class="register-form__label">Login</label>
+        <label for="login" class="register-form__label">Login</label>
         <div class="register-form__wrapper">
           <input
             class="register-form__input"
             type="text"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            name="login"
+            placeholder="cannot contain a dot"
             required
             data-login
           />
@@ -46,6 +47,7 @@
           <input
             class="register-form__input"
             type="password"
+            name="password"
             minlength="6"
             required
             data-password

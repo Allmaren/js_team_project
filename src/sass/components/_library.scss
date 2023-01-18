@@ -99,7 +99,15 @@
 .nav__list-library {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  margin-right: auto;
+
+  justify-content: space-around;
+}
+.nav__list-item-library {
+  margin-left: auto;
+
+  margin-right: 30px;
 }
 
 .nav__link-home-library,
@@ -164,6 +172,11 @@
     background-color: #ff6b01;
     border: #ff6b01;
   }
+}
+
+.btn-library-current {
+  background-color: #ff6b01;
+  border: #ff6b01;
 }
 
 // FT-11 Зверстати контейнер сторінки "My Library"
