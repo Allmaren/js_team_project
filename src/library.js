@@ -1,7 +1,7 @@
 import './js/fetch-library';
 import './js/fetch-query';
 
-import './js/add-to-library';
+import './js/library';
 
 import './js/pagination';
 import './js/queue';
