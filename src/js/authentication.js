@@ -69,6 +69,9 @@ async function onLogIn(evt) {
 
   if (userMovies) {
     onToggleModal();
+    if (location.href.includes('library.html')) {
+      location.reload();
+    }
     refs.formEl.reset();
     return userMovies;
   }
