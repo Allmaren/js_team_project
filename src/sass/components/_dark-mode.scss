@@ -10,14 +10,15 @@
 .form-switch span {
   position: relative;
   display: inline-block;
-  margin-right: 8px;
+  margin-right: 5px;
   // width: 50px;
   // height: 27px;
-  width: 38px;
+  width: 33px;
   height: 17px;
   background-color: #e6e6e6;
   border-radius: 23px;
   vertical-align: text-bottom;
+
   transition: all 0.3s linear;
 }
 .form-switch span::before {
@@ -26,10 +27,10 @@
   left: 0;
   // width: 42px;
   // height: 22px;
-  width: 32px;
+  width: 30px;
   height: 15px;
   background-color: #fff;
-  border-radius: 11px;
+  border-radius: 10px;
   transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
   transition: all 0.25s linear;
 }
@@ -37,10 +38,8 @@
   content: '';
   position: absolute;
   left: 0;
-  // width: 22px;
-  // height: 22px;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   background-color: #fff;
   border-radius: 11px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
@@ -53,7 +52,7 @@
   transform: translate3d(2px, 2px, 0);
 }
 .form-switch:active input:checked + span::after {
-  transform: translate3d(16px, 2px, 0);
+  transform: translate3d(13px, 2px, 0);
 }
 .form-switch input {
   display: none;
@@ -62,10 +61,10 @@
   background-color: #545454;
 }
 .form-switch input:checked + span::before {
-  transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+  transform: translate3d(13px, 2px, 0) scale3d(0, 0, 0);
 }
 .form-switch input:checked + span::after {
-  transform: translate3d(22px, 2px, 0);
+  transform: translate3d(18px, 2px, 0);
 }
 
 .theme-switch__icon {
