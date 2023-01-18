@@ -54,6 +54,13 @@ async function getMovies(fetchFilms, userId) {
   const arrayFilms = getFilms.slice(1);
 
   libraryUl.innerHTML = '';
+  if (arrayFilms.length === 0) {
+    libraryUl.innerHTML = '';
+    const imgEl =
+      '<li class="library-photo-item"><div class="library-photo"></div></li>';
+    libraryUl.insertAdjacentHTML('beforeend', imgEl);
+  }
+
   arrayFilms.map(async el => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${el}?api_key=1234dced32e7dcd076b4111d81f37c06`

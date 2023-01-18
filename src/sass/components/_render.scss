@@ -20,6 +20,12 @@
     height: 398px;
     border-radius: 5px;
     overflow: hidden;
+    background-image:  url('../images/no_image.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0 auto;
+    background-position: 50% 50%;
 
     @media screen and (min-width: 768px) {
       width: 336px;
