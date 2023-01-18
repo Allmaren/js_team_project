@@ -21,6 +21,11 @@ if (!userId) {
     'To create your collections of movies you have to log in. Please touch buttons "WATCHED" or "QUEUE" for log in or registration';
   libraryWrapper.append(notificationLibrary);
   setTimeout(() => notificationLibrary.remove(), 10000);
+
+  libraryUl.innerHTML = '';
+  const imgEl =
+    '<li class="library-photo-item"><div class="library-photo"></div></li>';
+  libraryUl.insertAdjacentHTML('beforeend', imgEl);
 } else {
   currentWatchedBtn.classList.add('btn-library-current');
   getMovies(allMoviesWatched, userId);
