@@ -1,8 +1,8 @@
-const addWatched = 'COMPLITED! This movie was added in your watched collection';
+const addWatched = 'COMPLETED! This movie was added in your watched collection';
 const removeWatched =
-  'COMPLITED! This movie was removed from your watched collection';
-const addQueue = 'COMPLITED! This movie was added in your queue for watching';
-const removeQueue = 'COMPLITED! This movie was removed from your queue';
+  'COMPLETED! This movie was removed from your watched collection';
+const addQueue = 'COMPLETED! This movie was added in your queue for watching';
+const removeQueue = 'COMPLETED! This movie was removed from your queue';
 const canNotDot = 'Warning! Login can not contain a dot';
 
 export function notificationUpdateButtons(clickButton) {

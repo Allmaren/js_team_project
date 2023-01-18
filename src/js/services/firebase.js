@@ -10,6 +10,7 @@ import { commonError } from './error';
 import { Notify } from 'notiflix';
 import { onToggleModal } from '../authentication';
 import { STORAGE_KEY } from '../authentication';
+import { reload } from './reload-library';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBSg4CGEIXkX93eS0B-tWQYlplv3PWQL0c',
@@ -54,6 +55,7 @@ export async function createUser({
               );
               localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
               onToggleModal();
+              setTimeout(() => reload(), 3000);
               return res;
             })
             .catch(error => commonError(error));

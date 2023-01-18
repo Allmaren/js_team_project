@@ -18,7 +18,7 @@ export function onMarkupRemovePlusAdd() {
       <button
         type="button"
         class="button-modal add-to-watched-btn"
-      >REMOVE TO WATCHED
+      >REMOVE FROM WATCHED
       </button>
       <button
         type="button"
@@ -38,7 +38,7 @@ export function onMarkupAddPlusRemove() {
       <button
         type="button"
         class="button-modal add-to-queue-btn"
-      >REMOVE TO QUEUE
+      >REMOVE FROM QUEUE
       </button>
     </div>`;
 }
@@ -48,12 +48,12 @@ export function onMarkupTwoRemove() {
       <button
         type="button"
         class="button-modal add-to-watched-btn"
-      >REMOVE TO WATCHED
+      >REMOVE FROM WATCHED
       </button>
       <button
         type="button"
         class="button-modal add-to-queue-btn"
-      >REMOVE TO QUEUE
+      >REMOVE FROM QUEUE
       </button>
     </div>`;
 }
