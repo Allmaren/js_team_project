@@ -2,7 +2,7 @@ import { onCloseModalByEscape } from './services/close-modal-register';
 import { createUser, logInUser } from './services/firebase';
 import { Notify } from 'notiflix';
 import { withoutDot } from './services/notification-update-buttons';
-import { reload } from './services/reload-library';
+import { reload, reloadHome } from './services/reload-library';
 
 export const STORAGE_KEY = 'user-id';
 
@@ -71,6 +71,9 @@ async function onLogIn(evt) {
   if (userMovies) {
     onToggleModal();
     reload();
+    setTimeout(() => {
+      reloadHome();
+    }, 3000);
     refs.formEl.reset();
     return userMovies;
   }
