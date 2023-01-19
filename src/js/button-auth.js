@@ -4,7 +4,6 @@ import { Notify } from 'notiflix';
 
 const userId = JSON.parse(localStorage.getItem('user-id'));
 const loginBtn = document.querySelector('.login-btn');
-const registerBtn = document.querySelector('.register-btn');
 
 if (userId) {
   loginBtn.textContent = 'LOG OUT';
