@@ -71,11 +71,6 @@
   }
 }
 
-
-
-
-
-
 .nav {
   padding-bottom: 40px;
   padding-top: 40px;
@@ -167,6 +162,10 @@ input:-webkit-autofill {
     outline: none;
     width: 400px;
     border-bottom: 0.5px solid #ff6b01;
+
+    @media screen and (max-width: 480px) {
+      width: 300px;
+    }
   }
 }
 
@@ -233,7 +232,13 @@ li {
   margin-top: 20px;
 
   color: #ff001b;
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+    margin-top: 10px;
+  }
 }
+
 .is-hidden-warn {
   position: absolute;
   width: 1px;

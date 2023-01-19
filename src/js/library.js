@@ -21,9 +21,9 @@ if (!userId) {
   let notificationLibrary = document.createElement('p');
   notificationLibrary.className = 'notification-update-movie';
   notificationLibrary.innerHTML =
-    'To create your collections of movies you have to log in. Please touch buttons "WATCHED" or "QUEUE" for log in or registration';
+    'To create your collections of movies you have to log in on Home page';
   libraryWrapper.append(notificationLibrary);
-  setTimeout(() => notificationLibrary.remove(), 10000);
+  setTimeout(() => notificationLibrary.remove(), 6000);
 
   libraryUl.innerHTML = '';
   const imgEl =

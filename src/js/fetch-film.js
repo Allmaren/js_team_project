@@ -31,7 +31,6 @@ function searchHandler(event) {
       new Pagination(container, paginatorOptions).on(
         'afterMove',
         function (eventData) {
-          console.log('The current page is ' + eventData.page);
           fetchData(searchQuery, eventData.page);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
