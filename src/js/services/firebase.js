@@ -55,7 +55,9 @@ export async function createUser({
               );
               localStorage.setItem(STORAGE_KEY, JSON.stringify(userEmail));
               onToggleModal();
-              setTimeout(() => reload(), 3000);
+              setTimeout(() => {
+                location.href = 'index.html';
+              }, 3000);
               return res;
             })
             .catch(error => commonError(error));
@@ -121,7 +123,7 @@ export async function updateMovies(userEmail, movieId, button) {
 
   if (button === 'add to watched' && allWatched) {
     await onAddWatchedMovies(database, userEmail, movieId, allWatched);
-    refs.watchedButton.textContent = 'REMOVE TO WATCHED';
+    refs.watchedButton.textContent = 'REMOVE FROM WATCHED';
   }
 
   if (button === 'remove to watched' && allWatched) {
@@ -131,7 +133,7 @@ export async function updateMovies(userEmail, movieId, button) {
 
   if (button === 'add to queue' && allQueue) {
     await onAddQueueMovies(database, userEmail, movieId, allQueue);
-    refs.queueButton.textContent = 'REMOVE TO QUEUE';
+    refs.queueButton.textContent = 'REMOVE FROM QUEUE';
   }
 
   if (button === 'remove to queue' && allQueue) {
