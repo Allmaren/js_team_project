@@ -9,6 +9,9 @@ const libraryWrapper = document.querySelector('.nav-library');
 const currentWatchedBtn = document.querySelector('.btn-watched');
 const currentQueueBtn = document.querySelector('.btn-queue');
 
+const watched = 'watched';
+const queque = 'queque';
+
 watchedEL.addEventListener('click', getWatchedFilms);
 queueEl.addEventListener('click', getQueueFilms);
 
@@ -18,9 +21,9 @@ if (!userId) {
   let notificationLibrary = document.createElement('p');
   notificationLibrary.className = 'notification-update-movie';
   notificationLibrary.innerHTML =
-    'To create your collections of movies you have to log in. Please touch buttons "WATCHED" or "QUEUE" for log in or registration';
+    'To create your collections of movies you have to log in on Home page';
   libraryWrapper.append(notificationLibrary);
-  setTimeout(() => notificationLibrary.remove(), 10000);
+  setTimeout(() => notificationLibrary.remove(), 6000);
 
   libraryUl.innerHTML = '';
   const imgEl =
@@ -28,7 +31,7 @@ if (!userId) {
   libraryUl.insertAdjacentHTML('beforeend', imgEl);
 } else {
   currentWatchedBtn.classList.add('btn-library-current');
-  getMovies(allMoviesWatched, userId);
+  getMovies(allMoviesWatched, userId, watched);
 }
 
 function getWatchedFilms() {
@@ -37,7 +40,7 @@ function getWatchedFilms() {
   } else {
     currentWatchedBtn.classList.add('btn-library-current');
     currentQueueBtn.classList.remove('btn-library-current');
-    getMovies(allMoviesWatched, userId);
+    getMovies(allMoviesWatched, userId, watched);
   }
 }
 
@@ -47,11 +50,11 @@ function getQueueFilms() {
   } else {
     currentWatchedBtn.classList.remove('btn-library-current');
     currentQueueBtn.classList.add('btn-library-current');
-    getMovies(allMoviesQueue, userId);
+    getMovies(allMoviesQueue, userId, queque);
   }
 }
 
-async function getMovies(fetchFilms, userId) {
+async function getMovies(fetchFilms, userId, photo) {
   const getFilms = await fetchFilms(userId)
     .then(res => res)
     .catch(error => console.log(error));
@@ -61,8 +64,7 @@ async function getMovies(fetchFilms, userId) {
   libraryUl.innerHTML = '';
   if (arrayFilms.length === 0) {
     libraryUl.innerHTML = '';
-    const imgEl =
-      '<li class="library-photo-item"><div class="library-photo"></div></li>';
+    const imgEl = `<li class="library-photo-item"><div class="library-${photo}-photo"></div></li>`;
     libraryUl.insertAdjacentHTML('beforeend', imgEl);
   }
 

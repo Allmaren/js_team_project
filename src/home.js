@@ -9,3 +9,4 @@ import './js/modal-team';
 import './js/component/render';
 import './js/component/dark-mode';
 import './js/component/scroll-up';
+import './js/button-auth';

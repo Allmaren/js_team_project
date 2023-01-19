@@ -3,3 +3,7 @@ export function reload() {
     location.reload();
   }
 }
+
+export function reloadHome() {
+  location.reload();
+}
