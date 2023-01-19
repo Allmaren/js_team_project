@@ -265,11 +265,11 @@ table tr {
 }
 
 .add-to-watched-btn {
-  padding: 6px 20px;
+  padding: 6px 15px;
 
-  margin-right: 20px;
+  margin-right: 10px;
 
-  width: 110px;
+  width: 120px;
   height: 44px;
   left: 170px;
   top: 876px;
@@ -302,18 +302,18 @@ table tr {
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 145px;
+    width: 165px;
   }
 
   @media screen and (min-width: 1024px) {
-    width: 146px;
+    width: 166px;
   }
 }
 
 .add-to-queue-btn {
-  padding: 6px 27px;
+  padding: 6px 15px;
 
-  width: 110px;
+  width: 120px;
   height: 44px;
   left: 170px;
   top: 876px;
@@ -341,12 +341,12 @@ table tr {
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 145px;
+    width: 165px;
     padding: 12px 7px;
   }
 
   @media screen and (min-width: 1024px) {
-    width: 146px;
+    width: 166px;
     padding: 12px 7px;
   }
 }

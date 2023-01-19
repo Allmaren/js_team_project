@@ -10,7 +10,6 @@ import { commonError } from './error';
 import { Notify } from 'notiflix';
 import { onToggleModal } from '../authentication';
 import { STORAGE_KEY } from '../authentication';
-import { reload } from './reload-library';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBSg4CGEIXkX93eS0B-tWQYlplv3PWQL0c',
@@ -126,7 +125,7 @@ export async function updateMovies(userEmail, movieId, button) {
     refs.watchedButton.textContent = 'REMOVE FROM WATCHED';
   }
 
-  if (button === 'remove to watched' && allWatched) {
+  if (button === 'remove from watched' && allWatched) {
     await onRemoveWatchedMovies(database, userEmail, movieId, allWatched);
     refs.watchedButton.textContent = 'ADD TO WATCHED';
   }
@@ -136,7 +135,7 @@ export async function updateMovies(userEmail, movieId, button) {
     refs.queueButton.textContent = 'REMOVE FROM QUEUE';
   }
 
-  if (button === 'remove to queue' && allQueue) {
+  if (button === 'remove from queue' && allQueue) {
     await onRemoveQueueMovies(database, userEmail, movieId, allQueue);
     refs.queueButton.textContent = 'ADD TO QUEUE';
   }
