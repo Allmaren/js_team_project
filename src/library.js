@@ -6,5 +6,6 @@ import './js/authentication';
 import './js/component/render';
 import './js/component/dark-mode';
 import './js/component/scroll-up';
+
 import './js/component/spinner';
 import './js/pagination';
