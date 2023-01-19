@@ -11,7 +11,6 @@ if (userId) {
 
 if (!userId) {
   loginBtn.addEventListener('click', onToggleModal);
-  registerBtn.addEventListener('click', onToggleModal);
 } else {
   loginBtn.addEventListener('click', () => {
     if (userId) {

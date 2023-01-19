@@ -229,11 +229,11 @@ li {
 
   align-items: center;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
 
   color: #ff001b;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     font-size: 12px;
     margin-top: 10px;
   }
